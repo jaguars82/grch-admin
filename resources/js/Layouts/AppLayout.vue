@@ -12,6 +12,8 @@
             <!--Top Menu-->
             <top-menu/>
             <!--TODO: Sync with Popup Menu-->
+            <!--Breadcrumb-->
+            <slot name="breadcrumb"></slot>
             <!--Content-->
             <div class="content-container">
                 <!--Content Header-->
@@ -34,8 +36,6 @@
                         <slot name="action-buttons"></slot>
                     </div>
                 </div>
-                <!--Breadcrumb-->
-                <slot name="breadcrumb"></slot>
                 <!--Content-->
                 <main class="flex flex-col flex-grow">
                     <!--Flash Messages-->

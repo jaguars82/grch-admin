@@ -1,6 +1,6 @@
 const notification_ru = {
-    pendingWorks: 'Ожидающие работы',
-    unfinishedTodos: 'Текущие дела',
+    pendingWorks: 'Задания в ожидании',
+    unfinishedTodos: 'Незавершенны дела',
     unreadMessages: 'Непрочитанные сообщения'
 };
 

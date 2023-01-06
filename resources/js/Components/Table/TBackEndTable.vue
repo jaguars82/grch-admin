@@ -538,7 +538,6 @@ import TInputText from "@/Components/Form/Inputs/TInputText";
 
 import {useI18n} from "vue-i18n";
 import table_en from "@/Lang/en/table_lang";
-import table_tr from "@/Lang/tr/table_lang";
 import _ from "lodash";
 import TInputBetween from "@/Components/Form/Inputs/TInputBetween";
 import TPaginate from "@/Components/Paginate/TPaginate";
@@ -686,7 +685,6 @@ export default defineComponent({
         const {t} = useI18n({
             messages: {
                 en: table_en,
-                tr: table_tr
             }
         });
 

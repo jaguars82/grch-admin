@@ -22,12 +22,7 @@ Route::get('lang/{locale}', function ($locale) {
     // Available languages
     $availableLangs = [
         'en' => 'en',
-        'bg' => 'bg',
-        'de' => 'de',
-        'fr' => 'fr',
         'ru' => 'ru',
-        'tr' => 'tr',
-        'zh' => 'zh',
     ];
     if (array_key_exists($locale, $availableLangs)) {
         session()->put('locale', $locale);
@@ -77,6 +72,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::post('settings-permission', [\App\Http\Controllers\Settings\PermissionController::class, 'index'])->name('settings-permission.search');
 
     });
+
+    /* Admin Panel Pages */
+    Route::get('tariff', [\App\Http\Controllers\TariffController::class, 'edit'])->name('tariff-edit');
+
 
     /*This pages for example, you can delete when you design the your system*/
     //Example Pages

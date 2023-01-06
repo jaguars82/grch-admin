@@ -14,6 +14,22 @@ export default function ({roles,permissions}) {
     const mainMenuLinks = computed(()=>{
         return [
             {
+                id: "InfoResources",
+                label: tm("information"),
+                icon: "circle-info",
+                link: null,
+                type: "dropdown",
+                links: [
+                    {
+                        id:"informationTariffTable",
+                        label:  tm("informationTariffTable"),
+                        icon: "money-check-dollar",
+                        link: "tariff-edit",
+                        type: "route"
+                    },
+                ]
+            },
+            /*{
                 id: "externalGitHubRepo",
                 label:  tm("externalGitHubRepo"),
                 icon: "star",
@@ -21,7 +37,7 @@ export default function ({roles,permissions}) {
                 type: "simple-link",
                 target: "_blank",
                 visibleFor: roles.includes('Super Admin'),
-            },
+            },*/
             {
                 id: "authPages",
                 label:  tm("authPages"),

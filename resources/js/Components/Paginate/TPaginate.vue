@@ -78,7 +78,6 @@
 <script>
 import {computed, defineComponent, ref, toRefs} from "vue";
 import {useI18n} from "vue-i18n";
-import pagination_tr from "@/Lang/tr/pagination_lang";
 import pagination_en from "@/Lang/en/pagination_lang";
 
 export default defineComponent({
@@ -146,7 +145,6 @@ export default defineComponent({
         const {t} = useI18n({
             messages: {
                 en: pagination_en,
-                tr: pagination_tr
             }
         });
 

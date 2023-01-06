@@ -1,15 +1,15 @@
 const authLangRu = {
-    email: "Электронное письмо",
+    email: "Электронная почта",
     password: "Пароль",
-    rememberMe: "Запомните меня",
-    forgotPassword: "Забыли Ваш пароль?",
-    login: "Входить",
+    rememberMe: "Запомнить меня",
+    forgotPassword: "Забыли пароль?",
+    login: "Войти",
     logout: "Выйти",
-    register: "Pегистр",
+    register: "Регистрация",
     validationMessage: {
         email: {
             required: "Поле электронной почты обязательно",
-            email: "Электронная почта должна быть действительным адресом электронной почты"
+            email: "Нужно указать действительный адрес электронной почты"
         },
         password: {
             required: "Поле пароля обязательно"

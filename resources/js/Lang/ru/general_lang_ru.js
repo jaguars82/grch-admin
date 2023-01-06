@@ -7,7 +7,7 @@ const generalLangRu = {
     /* Error */
     somethingWentWrong: "Упс! Что-то пошло не так",
     /* Simple Terms */
-    save: 'Сохранять',
+    save: 'Сохранить',
     reset: 'Перезагрузить',
     cancel: 'Отмена',
     delete: 'Удалить',

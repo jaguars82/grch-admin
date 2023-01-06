@@ -379,7 +379,6 @@ import TInputText from "@/Components/Form/Inputs/TInputText";
 import _ from "lodash";
 import {useI18n} from "vue-i18n";
 import table_en from "@/Lang/en/table_lang";
-import table_tr from "@/Lang/tr/table_lang";
 
 export default defineComponent({
     name: "TTable",
@@ -447,7 +446,6 @@ export default defineComponent({
         const {t} = useI18n({
             messages: {
                 en: table_en,
-                tr: table_tr
             }
         });
 
