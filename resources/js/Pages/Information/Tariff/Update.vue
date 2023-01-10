@@ -10,7 +10,6 @@
         </TBreadcrumb>
       </template>
       <template #default>
-        
         <div
           v-for="developer of tariffTable"
           :key="developer.id"
@@ -21,6 +20,7 @@
             :key="complex.id"
           >
             <p>{{ complex.name }}</p>
+            <TariffFieldsSet />
           </div>
         </div>
 
@@ -29,9 +29,10 @@
 </template>
 
 <script>
-import { computed } from 'vue';
+import { ref, computed } from 'vue';
 import AppLayout from "@/Layouts/AppLayout";
 import TBreadcrumb from "@/Components/Breadcrumb/TBreadcrumb";
+import TariffFieldsSet from "@/Pages/Information/Tariff/Partials/TariffFieldsSet.vue"
 
 export default {
   props: {
@@ -42,7 +43,8 @@ export default {
   },
   components: {
     AppLayout,
-    TBreadcrumb
+    TBreadcrumb,
+    TariffFieldsSet
   },
     setup(props) {
       const breadcrumbs = [

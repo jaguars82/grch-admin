@@ -19,7 +19,10 @@ import {
     faChevronDown,
     faEllipsisVertical,
     faCircleInfo,
-    faMoneyCheckDollar
+    faMoneyCheckDollar,
+    faPercent,
+    faDollarSign,
+    faRubleSign
 } from "@fortawesome/free-solid-svg-icons";
 
 
@@ -42,5 +45,8 @@ library.add(
     faChevronDown,
     faEllipsisVertical,
     faCircleInfo,
-    faMoneyCheckDollar
+    faMoneyCheckDollar,
+    faPercent,
+    faDollarSign,
+    faRubleSign
 )
