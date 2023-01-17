@@ -21,14 +21,15 @@
                 <div class="auth-logo">
                     <slot v-if="$slots.logo" name="logo"/>
                     <div v-else :class="authScreenConf.logoAreaClasses">
-                        <img
+                        <!--<img
                             :src="temporaryLogo"
                             :class="authScreenConf.logoClasses"
                         />
                         <span
                             v-text="authScreenConf.appName ? authScreenConf.appName : appConf.appName"
                             :class="authScreenConf.appNameClasses"
-                        ></span>
+                        ></span>-->
+                        <span :class="authScreenConf.appNameClasses">Панель управления ГРЧ</span>
                     </div>
                 </div>
                 <!--Greeting-->
@@ -103,17 +104,17 @@
                         </label>
 
                         <!--Forgot Password-->
-                        <Link
+                        <!--<Link
                             v-if="canResetPassword"
                             :href="route('password.request')"
                             class="auth-forgot-password"
                         >{{ t('forgotPassword') }}
-                        </Link>
+                        </Link>-->
                     </div>
                     <!--Submit Area-->
                     <div class="auth-submit-area">
                         <!--Register Button-->
-                        <t-button
+                        <!--<t-button
                             :class="{ 'opacity-25': form.processing }"
                             :design="activeDesign.registerButton[appearingMode].design"
                             :color="activeDesign.registerButton[appearingMode].color"
@@ -121,7 +122,7 @@
                             :radius="3"
                             type="link"
                         >{{ t('register') }}
-                        </t-button>
+                        </t-button>-->
 
                         <!--Submit Button-->
                         <t-button
@@ -154,16 +155,16 @@
 
 
         <!--Selectors-->
-        <div class="fixed bottom-0 flex z-50 w-full justify-center sm:justify-end space-x-6 p-6">
+        <!--<div class="fixed bottom-0 flex z-50 w-full justify-center sm:justify-end space-x-6 p-6">-->
             <!--Language Selector-->
-            <t-tooltip
+            <!--<t-tooltip
                 v-if="authScreenConf.showLanguageSelector"
                 position="top"
                 :border="false"
                 :custom-style="true"
-            >
+            >-->
                 <!--Selected Language-->
-                <div
+                <!--<div
                     class="flex justify-center items-center group bg-slate-100/50 hover:bg-slate-800/50 dark:text-slate-100 dark:bg-slate-800/75 dark:hover:bg-slate-100/75 dark:hover:text-slate-700 hover:text-slate-100 p-4 w-10 h-10 cursor-pointer overflow-hidden bg-cover"
                     :class="`radius-${authScreenConf.radius ? authScreenConf.radius : appConf.radius}`"
                 >
@@ -176,9 +177,8 @@
                         class="absolute text-sm -top-2 -right-2 bg-slate-100/10 dark:bg-slate-800/50 backdrop-filter backdrop-blur text-slate-100 px-1 rounded"
                         v-text="languages.find(i => i.id === locale).id"
                     ></span>
-                </div>
-                <template #boxContent>
-                    <!--Language Lists-->
+                </div>-->
+                <!--<template #boxContent>
                     <div class="top-menu-dropdown-content-wrapper-transparent mb-3">
                         <template v-for="lang in languages" :key="lang.id">
                             <div
@@ -190,17 +190,17 @@
                             </div>
                         </template>
                     </div>
-                </template>
-            </t-tooltip>
+                </template>-->
+            <!--</t-tooltip>-->
             <!--Dark Mode-->
-            <div
+            <!--<div
                 v-if="authScreenConf.showDarkModeSelector"
                 class="flex justify-center items-center bg-slate-100/50 hover:bg-slate-800/50 dark:text-slate-100 dark:bg-slate-800/75 dark:hover:bg-slate-100/75 dark:hover:text-slate-700 hover:text-slate-100 p-4 w-10 h-10 cursor-pointer overflow-hidden"
                 :class="`radius-${authScreenConf.radius ? authScreenConf.radius : appConf.radius}`"
                 @click="changeTheme"
             >
                 <transition mode="out-in" name="darkModeTransition">
-                    <!-- Light -->
+
                     <icon
                         v-if="darkMode === 'light'"
                         icon="sun"
@@ -209,7 +209,7 @@
                         :alt="tm('lightMode')"
                         class="transform hover:scale-110 active:scale-90 transition-transform duration-300"
                     />
-                    <!-- Auto -->
+
                     <icon
                         v-else-if="darkMode === 'auto'"
                         icon="palette"
@@ -218,7 +218,7 @@
                         :alt="tm('auto')"
                         class="transform hover:scale-110 active:scale-90 transition-transform duration-300"
                     />
-                    <!-- Dark -->
+
                     <icon
                         v-else
                         icon="moon"
@@ -228,9 +228,9 @@
                         class="transform hover:scale-110 active:scale-90 transition-transform duration-300"
                     />
                 </transition>
-            </div>
+            </div>-->
             <!--Change Background-->
-            <div
+            <!--<div
                 v-if="authScreenConf.showDesignChanger && authDesigns.length > 1"
                 @click="changeBg"
                 class="flex justify-center items-center group bg-slate-100/50 hover:bg-slate-800/50 dark:text-slate-100 dark:bg-slate-800/75 dark:hover:bg-slate-100/75 dark:hover:text-slate-700 hover:text-slate-100 p-4 w-10 h-10 cursor-pointer"
@@ -241,7 +241,7 @@
                     class="transform group-hover:scale-110 group-active:scale-90 transition-transform duration-300"
                 />
             </div>
-        </div>
+        </div>-->
     </full-screen-layout>
 </template>
 

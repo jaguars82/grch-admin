@@ -5,9 +5,9 @@
         </template>
         <template #default>
             <!--Statistical Widgets-->
-            <grid-section :col="2">
+            <!--<grid-section :col="2">-->
                 <!--With Icon, Down Direction-->
-                <t-statistic-widget
+                <!--<t-statistic-widget
                     color="solid-black"
                     diff-direction="down"
                     diff-value="15%"
@@ -18,9 +18,9 @@
                     <template #icon>
                         <t-cash-icon class="w-16 h-16"/>
                     </template>
-                </t-statistic-widget>
+                </t-statistic-widget>-->
                 <!--With Icon, Up Direction-->
-                <t-statistic-widget
+                <!--<t-statistic-widget
                     :radius="5"
                     color="solid-green"
                     diff-direction="up"
@@ -32,9 +32,9 @@
                     <template #icon>
                         <t-shopping-bag-icon class="w-16 h-16"/>
                     </template>
-                </t-statistic-widget>
+                </t-statistic-widget>-->
                 <!--Simple-->
-                <t-statistic-widget
+                <!--<t-statistic-widget
                     :radius="5"
                     color="solid-red"
                     diff-direction="down"
@@ -43,9 +43,9 @@
                     <template #title>
                         <span v-t="'refunds'"/>
                     </template>
-                </t-statistic-widget>
+                </t-statistic-widget>--->
                 <!--With Picture, Down Direction-->
-                <t-statistic-widget
+                <!--<t-statistic-widget
                     :radius="5"
                     color="solid-white"
                     diff-direction="down"
@@ -57,11 +57,12 @@
                     <template #picture>
                         <img :src="'/img/samples/imgMelBaylon-6WLcOFn4HKE-unsplash.jpg'">
                     </template>
-                </t-statistic-widget>
-            </grid-section>
+                </t-statistic-widget>-->
+            <!--</grid-section>-->
+            
             <!--Content Box-->
-            <grid-section :col="3">
-                <!--List-->
+            <!--<grid-section :col="3">
+
                 <t-content-card :width="1">
                     <template #title>
                         <span v-t="'userList'"/>
@@ -100,7 +101,7 @@
                         <span v-t="'activeProjects'"/>
                     </template>
                     <template #content>
-                        <!--Table-->
+
                         <t-table
                             :content="tableContent"
                             :header="tableHeader"
@@ -114,33 +115,32 @@
                         </t-table>
                     </template>
                 </t-content-card>
-            </grid-section>
+            </grid-section>-->
+            
             <!--Alerts-->
-            <grid-section :col-tablet="3">
-                <!--Red-Deleted-->
+            <!--<grid-section :col-tablet="3">
                 <t-alert design="filled" :closeable="true" color="danger">
                     <template #icon>
                         <t-trash-icon slot="icon" class="w-6 h-6"/>
                     </template>
                     <span v-t="'alertDeleted'"/>
                 </t-alert>
-                <!--Blue-Info-->
                 <t-alert design="inline" color="info">
                     <template #icon>
                         <t-information-circle-icon class="w-6 h-6"/>
                     </template>
                     <span v-t="'alertOverwrite'"/>
                 </t-alert>
-                <!--Green Success-->
                 <t-alert design="outline" color="success">
                     <template #icon>
                         <t-check-circle-icon class="w-6 h-6"/>
                     </template>
                     <span v-t="'alertSaved'"/>
                 </t-alert>
-            </grid-section>
+            </grid-section>-->
+
             <!--Rich Alerts-->
-            <grid-section :col-tablet="2">
+            <!--<grid-section :col-tablet="2">
                 <t-alert :radius="3" design="gradient" color="fuchsia" :closeable="true">
                     <template #icon>
                         <t-avatar :radius="8" :size="3" src="https://i.pravatar.cc/300"/>
@@ -156,7 +156,7 @@
                 >
                     <span v-html="tm('alertDeletedUser')"/>
                 </t-alert>
-            </grid-section>
+            </grid-section>-->
         </template>
     </app-layout>
 </template>
@@ -208,62 +208,6 @@ export default defineComponent({
     setup() {
         const {tm} = useI18n({
             messages: {
-                bg: {
-                    title: "Добре дошли в Anemon",
-                    home: "Дом",
-                    dashboard: "Табло за управление",
-                    incomes: "Доходи",
-                    dailyDoneCharts: "Дневни графики",
-                    refunds: "Възстановявания",
-                    stationeryCost: "Възстановяване на средства",
-                    userList: "Списък с потребители",
-                    activeProjects: "Активни проекти",
-                    name: "Име",
-                    startDate: "Начална дата",
-                    endDate: "Крайна дата",
-                    status: "Състояние",
-                    simpleSearch: "Просто търсене",
-                    name1: "Siyan Alekov Hristov",
-                    name2: "Brayko Vasilov Atanasov",
-                    name3: "Mihaela Demitrova Tsankova",
-                    name4: "Tanya Iskrenova Adamova",
-                    alertDeleted: "Потребителят е изтрит успешно, щракнете върху мен",
-                    alertOverwrite: "Всички промени се презаписват върху себе си",
-                    alertSaved: "Нов елемент е запазен успешно",
-                    alertNewUser: "Новият потребител е добавен успешно\n" +
-                        "<b>Потребител:</b> Sinan AYDOĞAN",
-                    alertDeletedUserTitle: "предупреждение",
-                    alertDeletedUser: "Потребителят е изтрит успешно\n" +
-                        "<b>Потребител:</b> Zuhal TAŞÇI"
-                },
-                de: {
-                    title: "Willkommen bei Anemon",
-                    home: "zu Hause",
-                    dashboard: "Dashboard",
-                    incomes: "Einkommen",
-                    dailyDoneCharts: "Daily Done Charts",
-                    refunds: "Rückerstattungen",
-                    stationeryCost: "Erstattungen",
-                    userList: "Benutzerliste",
-                    activeProjects: "Aktive Projekte",
-                    name: "Name",
-                    startDate: "Startdatum",
-                    endDate: "Enddatum",
-                    status: "Zustand",
-                    simpleSearch: "Einfache Suche",
-                    name1: "Siyan Alekov Hristov",
-                    name2: "Victor Bergius",
-                    name3: "Jessi Nachtigal",
-                    name4: "Silvia Krauss",
-                    alertDeleted: "Der Benutzer wurde erfolgreich gelöscht, klick mich an",
-                    alertOverwrite: "Alle Änderungen überschreiben sich selbst",
-                    alertSaved: "Neues Element erfolgreich gespeichert",
-                    alertNewUser: "Der neue Benutzer wurde erfolgreich hinzugefügt." +
-                        "<br/><b>Benutzer:</b> Sinan AYDOĞAN",
-                    alertDeletedUserTitle: "Warnung",
-                    alertDeletedUser: "Der Benutzer wurde erfolgreich gelöscht" +
-                        "<br/><b>Benutzer:</b> Zuhal TAŞÇI"
-                },
                 en: {
                     title: "Welcome to Anemon",
                     home: "Home",
@@ -292,38 +236,10 @@ export default defineComponent({
                     alertDeletedUser: "The user deleted successfully" +
                         "<br/><b>User:</b> Zuhal TAŞÇI"
                 },
-                tr: {
-                    title: "Anemon'a Hoşgeldiniz",
-                    home: "Ana Sayfa",
-                    dashboard: "Panel",
-                    incomes: "Gelirler",
-                    dailyDoneCharts: "Günlük Tamamlanan",
-                    refunds: "Geri İadeler",
-                    stationeryCost: "Kırtasiye Gideri",
-                    userList: "Kullanıcılar",
-                    activeProjects: "Aktif Projeler",
-                    name: "İsim",
-                    startDate: "Başlangıç",
-                    endDate: "Bitiş",
-                    status: "Durum",
-                    simpleSearch: "Arama",
-                    name1: "Sinem Aydoğan",
-                    name2: "Zuhal Taşçı",
-                    name3: "Ayşe Gürel",
-                    name4: "Günel Deren",
-                    alertDeleted: "Kullanıcı başarıyla silindi",
-                    alertOverwrite: "Tüm değişikler var olan kayıdın üzerine yazılacak",
-                    alertSaved: "Yeni içerik başarıyla eklendi",
-                    alertNewUser: "Yeni kullanıcı başarıyla eklendi\n" +
-                        "<b>Kullanıcı:</b> Sinan AYDOĞAN",
-                    alertDeletedUserTitle: "uyarı",
-                    alertDeletedUser: "Kullanıcı başarıyla silindi\n" +
-                        "<b>Kullanıcı:</b> Zuhal TAŞÇI"
-                },
                 ru: {
-                    title: "Добро пожаловать в Анемон",
-                    home: "Дом",
-                    dashboard: "Панель приборов",
+                    title: "Добро пожаловать в Панель Управления ГРЧ",
+                    home: "Главная",
+                    dashboard: "Панель управления",
                     incomes: "Доходы",
                     dailyDoneCharts: "Ежедневные диаграммы",
                     refunds: "Возвраты",
@@ -347,34 +263,6 @@ export default defineComponent({
                     alertDeletedUserTitle: "предупреждение",
                     alertDeletedUser: "Пользователь успешно удален" +
                         "<br/><b>Пользователь:</b> Зухал ТАШИ"
-                },
-                zh: {
-                    title: "欢迎来到海葵",
-                    home: "家",
-                    dashboard: "仪表板",
-                    incomes: "收入",
-                    dailyDoneCharts: "每日完成图表",
-                    refunds: "退款",
-                    stationeryCost: "退款",
-                    userList: "用户列表",
-                    activeProjects: "活动项目",
-                    name: "名称",
-                    startDate: "开始日期",
-                    endDate: "结束日期",
-                    status: "状态",
-                    simpleSearch: "简单搜索",
-                    name1: "Siyan Alekov Hristov",
-                    name2: "Yuan Lei",
-                    name3: "Liao Rong",
-                    name4: "Zhu Chang",
-                    alertDeleted: "用户删除成功，点我",
-                    alertOverwrite: "所有更改都覆盖到自己",
-                    alertSaved: "新项目保存成功",
-                    alertNewUser: "新用户添加成功。." +
-                        "<br/><b>用户:</b> Sinan AYDOĞAN",
-                    alertDeletedUserTitle: "警告",
-                    alertDeletedUser: "用户删除成功" +
-                        "<br/><b>用户:</b> Zuhal TAŞÇI"
                 },
             }
         });

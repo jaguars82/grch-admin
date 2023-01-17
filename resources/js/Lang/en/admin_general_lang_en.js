@@ -1,5 +1,10 @@
 const adminGeneralLangEn = {
     tariff: {
+      tariifs: "Tariffs",
+      tariifsForm: "tariff table form",
+      addComplexToTariff: "Add newbuilding complex to the tariff table",
+      removeComplexFromTariff: "Remove newbuilding complex from the tariff table",
+      noTypeLabel: "Choose tariff type",
       tariffToggleTooltip: "Choose tariff type",
       percentInputPlaceholder: "Enter amount",
       currencyInputPlaceholder: "Enter amount",
@@ -7,6 +12,14 @@ const adminGeneralLangEn = {
       inCurrency: "Currency",
       inPercent: "Percent",
       inCustomVal: "Custom value",
+      annotationInputLabel: "Annotation, condition, etc.",
+      annotationInputPlaceholder: "Enter your text",
+      addTariff: "Add one more tariff",
+      removeTariff: "Remove this tariff",
+      paytermsInputPlaceholder: "Payment terms",
+      createNewTable: "Save changes in new version of tariff table",
+      changesDescription: "Changes details",
+      saveTriffTable: "Save tariff table"
     }
   }
   

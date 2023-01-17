@@ -29,24 +29,24 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  __name: 'MainMenu',
   emits: ['updateMainMenuStatus'],
   setup: function setup(__props, _ref) {
     var expose = _ref.expose;
     expose();
+
     /*Functions*/
 
     /*Sources*/
-
     var _MainMenuLinks = (0,_Sources_mainMenuLinks__WEBPACK_IMPORTED_MODULE_3__["default"])({
-      roles: (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.usePage)().props.value.roles,
-      permissions: (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.usePage)().props.value.permissions
-    }),
-        mainMenuLinks = _MainMenuLinks.mainMenuLinks,
-        mainMenuFooterLinks = _MainMenuLinks.mainMenuFooterLinks;
-
+        roles: (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.usePage)().props.value.roles,
+        permissions: (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.usePage)().props.value.permissions
+      }),
+      mainMenuLinks = _MainMenuLinks.mainMenuLinks,
+      mainMenuFooterLinks = _MainMenuLinks.mainMenuFooterLinks;
     var activeMainLink = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)([null, null, null]);
-    /*Main-menu - Variables*/
 
+    /*Main-menu - Variables*/
     var appearingMode = (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)("appearingMode");
     (0,vue__WEBPACK_IMPORTED_MODULE_0__.onBeforeMount)(function () {
       mainMenuLinks.value.forEach(function (ml) {
@@ -56,16 +56,14 @@ __webpack_require__.r(__webpack_exports__);
             if (ml.link === route().current()) {
               activeMainLink.value[0] = ml.id;
             }
+
             /*Active Sub-link*/
-
-
             if (sl.link === route().current()) {
               activeMainLink.value[0] = ml.id;
               activeMainLink.value[1] = sl.id;
             }
+
             /*Active Third-link*/
-
-
             if (sl.hasOwnProperty('links')) {
               sl.links.find(function (tl) {
                 if (tl.link === route().current()) {
@@ -79,23 +77,23 @@ __webpack_require__.r(__webpack_exports__);
         }
       });
     });
-    /*Sub-menu - Variables*/
 
+    /*Sub-menu - Variables*/
     var subMenu = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
     var showSubMenu = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)();
-    /*Submenu - Visibility*/
 
+    /*Submenu - Visibility*/
     (0,_vueuse_core__WEBPACK_IMPORTED_MODULE_7__.onClickOutside)(subMenu, function (event) {
       return showSubMenu.value = false;
     });
-    /*Third-menu */
 
+    /*Third-menu */
     var thirdMenu = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(null);
     (0,_vueuse_core__WEBPACK_IMPORTED_MODULE_7__.onClickOutside)(thirdMenu, function (event) {
       return activeMainLink.value[2] = null;
     });
-    /*Watch Window Size*/
 
+    /*Watch Window Size*/
     var breakpoints = (0,vue__WEBPACK_IMPORTED_MODULE_0__.inject)('breakpoints');
     (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)(function () {
       return (0,lodash__WEBPACK_IMPORTED_MODULE_2__.cloneDeep)(breakpoints);
@@ -103,7 +101,6 @@ __webpack_require__.r(__webpack_exports__);
       if (newValue.value.smaller('md').value) {
         _Functions_menuTrigger__WEBPACK_IMPORTED_MODULE_6__.menuStatus.value = 'hidden';
       }
-
       if (newValue.value.greater('md').value) {
         _Functions_menuTrigger__WEBPACK_IMPORTED_MODULE_6__.menuStatus.value = 'opened';
       }
@@ -121,15 +118,33 @@ __webpack_require__.r(__webpack_exports__);
       onBeforeMount: vue__WEBPACK_IMPORTED_MODULE_0__.onBeforeMount,
       inject: vue__WEBPACK_IMPORTED_MODULE_0__.inject,
       watch: vue__WEBPACK_IMPORTED_MODULE_0__.watch,
-      Link: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.Link,
-      usePage: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.usePage,
-      onClickOutside: _vueuse_core__WEBPACK_IMPORTED_MODULE_7__.onClickOutside,
-      cloneDeep: lodash__WEBPACK_IMPORTED_MODULE_2__.cloneDeep,
-      MainMenuLinks: _Sources_mainMenuLinks__WEBPACK_IMPORTED_MODULE_3__["default"],
-      UserMenu: _Layouts_MainMenu_Abay_UserMenu__WEBPACK_IMPORTED_MODULE_4__["default"],
-      appConf: _config__WEBPACK_IMPORTED_MODULE_5__.appConf,
-      mainMenuConf: _config__WEBPACK_IMPORTED_MODULE_5__.mainMenuConf,
-      menuStatus: _Functions_menuTrigger__WEBPACK_IMPORTED_MODULE_6__.menuStatus
+      get Link() {
+        return _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.Link;
+      },
+      get usePage() {
+        return _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.usePage;
+      },
+      get onClickOutside() {
+        return _vueuse_core__WEBPACK_IMPORTED_MODULE_7__.onClickOutside;
+      },
+      get cloneDeep() {
+        return lodash__WEBPACK_IMPORTED_MODULE_2__.cloneDeep;
+      },
+      get MainMenuLinks() {
+        return _Sources_mainMenuLinks__WEBPACK_IMPORTED_MODULE_3__["default"];
+      },
+      get UserMenu() {
+        return _Layouts_MainMenu_Abay_UserMenu__WEBPACK_IMPORTED_MODULE_4__["default"];
+      },
+      get appConf() {
+        return _config__WEBPACK_IMPORTED_MODULE_5__.appConf;
+      },
+      get mainMenuConf() {
+        return _config__WEBPACK_IMPORTED_MODULE_5__.mainMenuConf;
+      },
+      get menuStatus() {
+        return _Functions_menuTrigger__WEBPACK_IMPORTED_MODULE_6__.menuStatus;
+      }
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
@@ -217,7 +232,6 @@ var _hoisted_24 = ["href", "target"];
 var _hoisted_25 = ["textContent"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_icon = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("icon");
-
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["abay-main-menu", {
       'border-r': $setup.showSubMenu,
@@ -231,16 +245,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
         src: [$setup.appearingMode === 'dark' ? $setup.mainMenuConf.abay.logo.dark ? $setup.mainMenuConf.abay.logo.dark : $setup.appConf.logo.dark : $setup.mainMenuConf.abay.logo.light ? $setup.mainMenuConf.abay.logo.light : $setup.appConf.logo.light]
-      }, null, 8
-      /* PROPS */
-      , _hoisted_1)];
+      }, null, 8 /* PROPS */, _hoisted_1)];
     }),
-    _: 1
-    /* STABLE */
-
-  }, 8
-  /* PROPS */
-  , ["href"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Main Links "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Link "), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.mainMenuLinks, function (link) {
+    _: 1 /* STABLE */
+  }, 8 /* PROPS */, ["href"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Main Links "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Link "), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.mainMenuLinks, function (link) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
       key: link.id,
       onClick: function onClick($event) {
@@ -254,14 +262,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       key: 0,
       icon: link.icon,
       "class": "w-6 h-6"
-    }, null, 8
-    /* PROPS */
-    , ["icon"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Label "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+    }, null, 8 /* PROPS */, ["icon"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Label "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
       "class": "text-[.65rem]",
       textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(link.label)
-    }, null, 8
-    /* PROPS */
-    , _hoisted_5)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("Internal Route Link"), link.type === 'route' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["Link"], {
+    }, null, 8 /* PROPS */, _hoisted_5)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("Internal Route Link"), link.type === 'route' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["Link"], {
       key: 1,
       href: _ctx.route(link.link),
       "class": "abay-main-menu-root-link"
@@ -271,21 +275,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           key: 0,
           icon: link.icon,
           "class": "w-6 h-6"
-        }, null, 8
-        /* PROPS */
-        , ["icon"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Label "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+        }, null, 8 /* PROPS */, ["icon"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Label "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
           "class": "text-[.65rem]",
           textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(link.label)
-        }, null, 8
-        /* PROPS */
-        , _hoisted_6)];
+        }, null, 8 /* PROPS */, _hoisted_6)];
       }),
-      _: 2
-      /* DYNAMIC */
-
-    }, 1032
-    /* PROPS, DYNAMIC_SLOTS */
-    , ["href"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("External Link"), link.type === 'simple-link' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("a", {
+      _: 2 /* DYNAMIC */
+    }, 1032 /* PROPS, DYNAMIC_SLOTS */, ["href"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("External Link"), link.type === 'simple-link' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("a", {
       "class": "abay-main-menu-root-link",
       href: link.link,
       target: !!link.target,
@@ -294,21 +290,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       key: 0,
       icon: link.icon,
       "class": "w-6 h-6"
-    }, null, 8
-    /* PROPS */
-    , ["icon"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Label "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+    }, null, 8 /* PROPS */, ["icon"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Label "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
       "class": "text-[.65rem]",
       textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(link.label)
-    }, null, 8
-    /* PROPS */
-    , _hoisted_8)], 8
-    /* PROPS */
-    , _hoisted_7)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 10
-    /* CLASS, PROPS */
-    , _hoisted_3);
-  }), 128
-  /* KEYED_FRAGMENT */
-  ))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("Footer Links"), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.mainMenuFooterLinks, function (link) {
+    }, null, 8 /* PROPS */, _hoisted_8)], 8 /* PROPS */, _hoisted_7)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 10 /* CLASS, PROPS */, _hoisted_3);
+  }), 128 /* KEYED_FRAGMENT */))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("Footer Links"), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.mainMenuFooterLinks, function (link) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
       key: link.id,
       "class": "flex flex-shrink-0 justify-center items-center h-12 w-12 mx-auto bg-slate-100/10 mb-4 rounded-full"
@@ -322,16 +308,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           key: 0,
           icon: link.icon,
           "class": "mt-1 w-6 h-6"
-        }, null, 8
-        /* PROPS */
-        , ["icon"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)];
+        }, null, 8 /* PROPS */, ["icon"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)];
       }),
-      _: 2
-      /* DYNAMIC */
-
-    }, 1032
-    /* PROPS, DYNAMIC_SLOTS */
-    , ["href"])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+      _: 2 /* DYNAMIC */
+    }, 1032 /* PROPS, DYNAMIC_SLOTS */, ["href"])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
       key: 1
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("External Link"), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("a", {
       id: "footer-link",
@@ -342,32 +322,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       key: 0,
       icon: link.icon,
       "class": "mt-1 w-6 h-6"
-    }, null, 8
-    /* PROPS */
-    , ["icon"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 8
-    /* PROPS */
-    , _hoisted_9))], 2112
-    /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */
-    ))]);
-  }), 128
-  /* KEYED_FRAGMENT */
-  )), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" User Menu "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["UserMenu"])])], 2
-  /* CLASS */
-  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Sub Links "), $setup.activeMainLink[0] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
+    }, null, 8 /* PROPS */, ["icon"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 8 /* PROPS */, _hoisted_9))], 2112 /* STABLE_FRAGMENT, DEV_ROOT_FRAGMENT */))]);
+  }), 128 /* KEYED_FRAGMENT */)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" User Menu "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["UserMenu"])])], 2 /* CLASS */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Sub Links "), $setup.activeMainLink[0] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
     key: 0,
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["absolute z-10 flex h-full flex-col px-4 -mb-4 w-56 bg-gradient-to-tl from-slate-700/90 to-slate-800 text-gray-50", [$setup.showSubMenu ? 'left-28' : '-left-56', 'transition-all duration-700']]),
     ref: "subMenu"
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Firm Info "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Firm Name "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
     "class": "text-2xl font-bold",
     innerHTML: $setup.mainMenuConf.appName ? $setup.mainMenuConf.appName : $setup.appConf.appName
-  }, null, 8
-  /* PROPS */
-  , _hoisted_12), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Firm Slogan "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  }, null, 8 /* PROPS */, _hoisted_12), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Firm Slogan "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
     "class": "text-xs font-semibold text-center",
     innerHTML: $setup.mainMenuConf.catchPhrase ? $setup.mainMenuConf.catchPhrase : $setup.appConf.catchPhrase
-  }, null, 8
-  /* PROPS */
-  , _hoisted_13)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Sub Links "), $setup.activeMainLink[0] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Sub Link "), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.mainMenuLinks.find(function (l) {
+  }, null, 8 /* PROPS */, _hoisted_13)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Sub Links "), $setup.activeMainLink[0] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Sub Link "), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.mainMenuLinks.find(function (l) {
     return l.id === $setup.activeMainLink[0];
   }).links, function (subLink) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
@@ -378,13 +344,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("Dropdown"), subLink.type === 'dropdown' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Icon "), subLink.icon ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_icon, {
       key: 0,
       icon: subLink.icon
-    }, null, 8
-    /* PROPS */
-    , ["icon"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Label "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+    }, null, 8 /* PROPS */, ["icon"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Label "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
       textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(subLink.label)
-    }, null, 8
-    /* PROPS */
-    , _hoisted_17)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("Dropdown Icon"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    }, null, 8 /* PROPS */, _hoisted_17)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("Dropdown Icon"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
       "class": "px-2 cursor-pointer",
       onClick: function onClick($event) {
         return $setup.activeMainLink[2] = $setup.activeMainLink[2] === subLink.id ? null : subLink.id;
@@ -393,9 +355,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       key: 0,
       icon: "ellipsis-vertical",
       size: "sm"
-    })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 8
-    /* PROPS */
-    , _hoisted_18)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("Internal Route Link"), subLink.type === 'route' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["Link"], {
+    })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 8 /* PROPS */, _hoisted_18)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("Internal Route Link"), subLink.type === 'route' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["Link"], {
       key: 1,
       href: _ctx.route(subLink.link),
       "class": "flex space-x-2 items-center"
@@ -404,20 +364,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Icon "), subLink.icon ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_icon, {
           key: 0,
           icon: subLink.icon
-        }, null, 8
-        /* PROPS */
-        , ["icon"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Label "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+        }, null, 8 /* PROPS */, ["icon"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Label "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
           textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(subLink.label)
-        }, null, 8
-        /* PROPS */
-        , _hoisted_19)];
+        }, null, 8 /* PROPS */, _hoisted_19)];
       }),
-      _: 2
-      /* DYNAMIC */
-
-    }, 1032
-    /* PROPS, DYNAMIC_SLOTS */
-    , ["href"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("External Link"), subLink.type === 'simple-link' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("a", {
+      _: 2 /* DYNAMIC */
+    }, 1032 /* PROPS, DYNAMIC_SLOTS */, ["href"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("External Link"), subLink.type === 'simple-link' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("a", {
       "class": "flex space-x-2 items-center",
       href: subLink.link,
       target: !!subLink.target,
@@ -425,15 +377,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Icon "), subLink.icon ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_icon, {
       key: 0,
       icon: subLink.icon
-    }, null, 8
-    /* PROPS */
-    , ["icon"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Label "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+    }, null, 8 /* PROPS */, ["icon"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Label "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
       textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(subLink.label)
-    }, null, 8
-    /* PROPS */
-    , _hoisted_21)], 8
-    /* PROPS */
-    , _hoisted_20)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("Third Menu"), $setup.activeMainLink[2] === subLink.id ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_22, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(subLink.links, function (thirdLink) {
+    }, null, 8 /* PROPS */, _hoisted_21)], 8 /* PROPS */, _hoisted_20)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("Third Menu"), $setup.activeMainLink[2] === subLink.id ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_22, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(subLink.links, function (thirdLink) {
       return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
         key: thirdLink,
         "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["p-1 rounded-md", [{
@@ -448,20 +394,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Icon "), thirdLink.icon ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_icon, {
             key: 0,
             icon: thirdLink.icon
-          }, null, 8
-          /* PROPS */
-          , ["icon"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Label "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+          }, null, 8 /* PROPS */, ["icon"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Label "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
             textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(thirdLink.label)
-          }, null, 8
-          /* PROPS */
-          , _hoisted_23)];
+          }, null, 8 /* PROPS */, _hoisted_23)];
         }),
-        _: 2
-        /* DYNAMIC */
-
-      }, 1032
-      /* PROPS, DYNAMIC_SLOTS */
-      , ["href"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("External Link"), thirdLink.type === 'simple-link' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("a", {
+        _: 2 /* DYNAMIC */
+      }, 1032 /* PROPS, DYNAMIC_SLOTS */, ["href"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("External Link"), thirdLink.type === 'simple-link' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("a", {
         "class": "flex space-x-2 items-center",
         href: thirdLink.link,
         target: !!thirdLink.target,
@@ -469,31 +407,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Icon "), thirdLink.icon ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_icon, {
         key: 0,
         icon: thirdLink.icon
-      }, null, 8
-      /* PROPS */
-      , ["icon"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Label "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+      }, null, 8 /* PROPS */, ["icon"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" Label "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
         textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(thirdLink.label)
-      }, null, 8
-      /* PROPS */
-      , _hoisted_25)], 8
-      /* PROPS */
-      , _hoisted_24)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 2
-      /* CLASS */
-      );
-    }), 128
-    /* KEYED_FRAGMENT */
-    ))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 2
-    /* CLASS */
-    );
-  }), 128
-  /* KEYED_FRAGMENT */
-  ))], 512
-  /* NEED_PATCH */
-  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 2
-  /* CLASS */
-  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 64
-  /* STABLE_FRAGMENT */
-  );
+      }, null, 8 /* PROPS */, _hoisted_25)], 8 /* PROPS */, _hoisted_24)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 2 /* CLASS */);
+    }), 128 /* KEYED_FRAGMENT */))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 2 /* CLASS */);
+  }), 128 /* KEYED_FRAGMENT */))], 512 /* NEED_PATCH */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 2 /* CLASS */)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 64 /* STABLE_FRAGMENT */);
 }
 
 /***/ }),
@@ -533,300 +451,362 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__(_ref) {
   var roles = _ref.roles,
-      permissions = _ref.permissions;
-
+    permissions = _ref.permissions;
   var _useI18n = (0,vue_i18n__WEBPACK_IMPORTED_MODULE_2__.useI18n)({
-    inheritLocale: true,
-    messages: _Lang_languages__WEBPACK_IMPORTED_MODULE_0__.mainMenuTranslates
-  }),
-      tm = _useI18n.tm;
+      inheritLocale: true,
+      messages: _Lang_languages__WEBPACK_IMPORTED_MODULE_0__.mainMenuTranslates
+    }),
+    tm = _useI18n.tm;
+
   /*Main Menu Links*/
-
-
   var mainMenuLinks = (0,vue__WEBPACK_IMPORTED_MODULE_1__.computed)(function () {
     return [{
-      id: "externalGitHubRepo",
-      label: tm("externalGitHubRepo"),
-      icon: "star",
-      link: "https://github.com/sinan-aydogan/anemon-laravel",
-      type: "simple-link",
-      target: "_blank",
-      visibleFor: roles.includes('Super Admin')
-    }, {
-      id: "authPages",
-      label: tm("authPages"),
-      icon: "tv",
+      id: "InfoResources",
+      label: tm("information"),
+      icon: "circle-info",
       link: null,
       type: "dropdown",
       links: [{
-        id: "authLogin",
-        label: tm("authLogin"),
-        icon: null,
-        link: "login-app",
-        type: "route"
-      }, {
-        id: "authRegister",
-        label: tm("authRegister"),
-        icon: null,
-        link: "register-app",
-        type: "route"
-      }, {
-        id: "authForgotPassword",
-        label: tm("authForgotPassword"),
-        icon: null,
-        link: "forgot-password-app",
-        type: "route"
-      }, {
-        id: "authLockScreen",
-        label: tm("authLockScreen"),
-        icon: null,
-        link: "lock-app",
-        type: "route"
-      }, {
-        id: "authProfile",
-        label: tm("authProfile"),
-        icon: null,
-        link: "profile.show",
+        id: "informationTariffTable",
+        label: tm("informationTariffTable"),
+        icon: "money-check-dollar",
+        link: "tariff-edit",
         type: "route"
       }]
-    }, {
-      id: "components",
-      label: tm("components"),
-      icon: "plug",
-      link: null,
-      type: "dropdown",
-      links: [{
-        id: "componentAlert",
-        label: tm("componentAlert"),
-        icon: null,
-        link: "alert",
-        type: "route"
-      }, {
-        id: "componentAvatar",
-        label: tm("componentAvatar"),
-        icon: null,
-        link: "avatar",
-        type: "route"
-      }, {
-        id: "componentBadge",
-        label: tm("componentBadge"),
-        icon: null,
-        link: "badge",
-        type: "route"
-      }, {
-        id: "componentBreadcrumb",
-        label: tm("componentBreadcrumb"),
-        icon: null,
-        link: "breadcrumb",
-        type: "route"
-      }, {
-        id: "componentButton",
-        label: tm("componentButton"),
-        icon: null,
-        link: "button",
-        type: "route"
-      }, {
-        id: "componentCollapsible",
-        label: tm("componentCollapsible"),
-        icon: null,
-        link: "collapsible",
-        type: "route"
-      }, {
-        id: "componentDropdown",
-        label: tm("componentDropdown"),
-        icon: null,
-        link: "dropdown",
-        type: "route"
-      }, {
-        id: "componentList",
-        label: tm("componentList"),
-        icon: null,
-        link: "list",
-        type: "route"
-      }, {
-        id: "componentLoading",
-        label: tm("componentLoading"),
-        icon: null,
-        link: "loading",
-        type: "route"
-      }, {
-        id: "componentModal",
-        label: tm("componentModal"),
-        icon: null,
-        link: "modal",
-        type: "route"
-      }, {
-        id: "componentProgressBar",
-        label: tm("componentProgressBar"),
-        icon: null,
-        link: "progress",
-        type: "route"
-      }, {
-        id: "componentStatisticWidget",
-        label: tm("componentStatisticWidget"),
-        icon: "chart-bar",
-        link: "layout-statistic-widget",
-        type: "route"
-      }, {
-        id: "componentTab",
-        label: tm("componentTab"),
-        icon: null,
-        link: "tab",
-        type: "route"
-      }, {
-        id: "componentTable",
-        label: tm("componentTable"),
-        icon: "table",
+    }
+    /*{
+        id: "externalGitHubRepo",
+        label:  tm("externalGitHubRepo"),
+        icon: "star",
+        link: "https://github.com/sinan-aydogan/anemon-laravel",
+        type: "simple-link",
+        target: "_blank",
+        visibleFor: roles.includes('Super Admin'),
+    },*/
+    /*{
+        id: "authPages",
+        label:  tm("authPages"),
+        icon: "tv",
         link: null,
         type: "dropdown",
-        links: [{
-          id: "componentTableJson",
-          label: tm("componentTableJson"),
-          icon: null,
-          link: "table",
-          type: "route"
-        }, {
-          id: "componentTableBackend",
-          label: tm("componentTableBackend"),
-          icon: null,
-          link: "back-end-table",
-          type: "route"
-        }, {
-          id: "componentPagination",
-          label: tm("componentPagination"),
-          icon: null,
-          link: "pagination",
-          type: "route"
-        }]
-      }, {
-        id: "componentTooltip",
-        label: tm("componentTooltip"),
-        icon: null,
-        link: "tooltip",
-        type: "route"
-      }, {
-        id: "layoutElements",
-        label: tm("layoutElements"),
-        icon: "window-maximize",
+        links: [
+            {
+                id:"authLogin",
+                label:  tm("authLogin"),
+                icon: null,
+                link: "login-app",
+                type: "route"
+            },
+            {
+                id: "authRegister",
+                label:  tm("authRegister"),
+                icon: null,
+                link: "register-app",
+                type: "route"
+            },
+            {
+                id: "authForgotPassword",
+                label:  tm("authForgotPassword"),
+                icon: null,
+                link: "forgot-password-app",
+                type: "route"
+            },
+            {
+                id: "authLockScreen",
+                label:  tm("authLockScreen"),
+                icon: null,
+                link: "lock-app",
+                type: "route"
+            },
+            {
+                id: "authProfile",
+                label:  tm("authProfile"),
+                icon: null,
+                link: "profile.show",
+                type: "route"
+            }
+        ]
+    },*/
+    /*{
+        id: "components",
+        label:  tm("components"),
+        icon: "plug",
         link: null,
         type: "dropdown",
-        links: [{
-          id: "layoutStructure",
-          label: tm("layoutStructure"),
-          icon: "layer-group",
-          link: "layout-structure",
-          type: "route"
-        }, {
-          id: "layoutGrid",
-          label: tm("layoutGrid"),
-          icon: "grip-horizontal",
-          link: "layout-grid",
-          type: "route"
-        }, {
-          id: "componentContentBox",
-          label: tm("componentContentBox"),
-          icon: "window-restore",
-          link: "content-box",
-          type: "route"
-        }]
-      }]
-    }, {
-      id: "formElements",
-      label: tm("formElements"),
-      icon: "edit",
-      link: null,
-      type: "dropdown",
-      links: [{
-        id: "formStructure",
-        label: tm("formStructure"),
-        icon: null,
-        link: "form-structure",
-        type: "route"
-      }, {
-        id: "formInputGroup",
-        label: tm("formInputGroup"),
-        icon: null,
-        link: "form-input-group",
-        type: "route"
-      }, {
-        id: "formSimpleInputs",
-        label: tm("formSimpleInputs"),
-        icon: null,
-        link: "form-simple-field",
-        type: "route"
-      }, {
-        id: "formRepeatableInput",
-        label: tm("formRepeatableInput"),
-        icon: "retweet",
-        link: "form-repeatable-field",
-        type: "route"
-      }, {
-        id: "formDateTimeInput",
-        label: tm("formDateTimeInput"),
-        icon: "clock",
-        link: "form-date-field",
-        type: "route"
-      }, {
-        id: "formSelectInput",
-        label: tm("formSelectInput"),
-        icon: null,
-        link: "form-select-input",
-        type: "route"
-      }]
-    }, {
-      id: "externalSources",
-      label: tm("externalSources"),
-      icon: "code",
-      type: "dropdown",
-      links: [{
-        id: "externalLaravelDocument",
-        label: tm("externalLaravelDocument"),
-        icon: null,
-        link: "https://laravel.com/docs",
-        type: "simple-link",
-        target: "_blank"
-      }, {
-        id: "externalInertiaDocument",
-        label: tm("externalInertiaDocument"),
-        icon: null,
-        link: "https://inertiajs.com/",
-        type: "simple-link",
-        target: "_blank"
-      }, {
-        id: "externalVuejsDocument",
-        label: tm("externalVuejsDocument"),
-        icon: null,
-        link: "https://v3.vuejs.org/",
-        type: "simple-link",
-        target: "_blank"
-      }, {
-        id: "externalTailwindcssDocument",
-        label: tm("externalTailwindcssDocument"),
-        icon: null,
-        link: "https://tailwindcss.com/docs",
-        type: "simple-link",
-        target: "_blank"
-      }]
-    }];
+        links: [
+            {
+                id: "componentAlert",
+                label:  tm("componentAlert"),
+                icon: null,
+                link: "alert",
+                type: "route"
+            },
+            {
+                id: "componentAvatar",
+                label:  tm("componentAvatar"),
+                icon: null,
+                link: "avatar",
+                type: "route"
+            },
+            {
+                id: "componentBadge",
+                label:  tm("componentBadge"),
+                icon: null,
+                link: "badge",
+                type: "route"
+            },
+            {
+                id: "componentBreadcrumb",
+                label:  tm("componentBreadcrumb"),
+                icon: null,
+                link: "breadcrumb",
+                type: "route"
+            },
+            {
+                id: "componentButton",
+                label:  tm("componentButton"),
+                icon: null,
+                link: "button",
+                type: "route"
+            },
+            {
+                id: "componentCollapsible",
+                label:  tm("componentCollapsible"),
+                icon: null,
+                link: "collapsible",
+                type: "route"
+            },
+            {
+                id: "componentDropdown",
+                label:  tm("componentDropdown"),
+                icon: null,
+                link: "dropdown",
+                type: "route"
+            },
+            {
+                id: "componentList",
+                label:  tm("componentList"),
+                icon: null,
+                link: "list",
+                type: "route"
+            },
+            {
+                id: "componentLoading",
+                label:  tm("componentLoading"),
+                icon: null,
+                link: "loading",
+                type: "route"
+            },
+            {
+                id: "componentModal",
+                label:  tm("componentModal"),
+                icon: null,
+                link: "modal",
+                type: "route"
+            },
+            {
+                id: "componentProgressBar",
+                label:  tm("componentProgressBar"),
+                icon: null,
+                link: "progress",
+                type: "route"
+            },
+            {
+                id: "componentStatisticWidget",
+                label:  tm("componentStatisticWidget"),
+                icon: "chart-bar",
+                link: "layout-statistic-widget",
+                type: "route"
+            },
+            {
+                id: "componentTab",
+                label:  tm("componentTab"),
+                icon: null,
+                link: "tab",
+                type: "route"
+            },
+            {
+                id: "componentTable",
+                label:  tm("componentTable"),
+                icon: "table",
+                link: null,
+                type: "dropdown",
+                links: [
+                    {
+                        id: "componentTableJson",
+                        label:  tm("componentTableJson"),
+                        icon: null,
+                        link: "table",
+                        type: "route"
+                    },
+                    {
+                        id: "componentTableBackend",
+                        label:  tm("componentTableBackend"),
+                        icon: null,
+                        link: "back-end-table",
+                        type: "route"
+                    },
+                    {
+                        id: "componentPagination",
+                        label:  tm("componentPagination"),
+                        icon: null,
+                        link: "pagination",
+                        type: "route"
+                    }
+                ]
+            },
+            {
+                id: "componentTooltip",
+                label:  tm("componentTooltip"),
+                icon: null,
+                link: "tooltip",
+                type: "route"
+            },
+            {
+                id: "layoutElements",
+                label:  tm("layoutElements"),
+                icon: "window-maximize",
+                link: null,
+                type: "dropdown",
+                links: [
+                    {
+                        id: "layoutStructure",
+                        label:  tm("layoutStructure"),
+                        icon: "layer-group",
+                        link: "layout-structure",
+                        type: "route"
+                    },
+                    {
+                        id: "layoutGrid",
+                        label:  tm("layoutGrid"),
+                        icon: "grip-horizontal",
+                        link: "layout-grid",
+                        type: "route"
+                    },
+                    {
+                        id: "componentContentBox",
+                        label:  tm("componentContentBox"),
+                        icon: "window-restore",
+                        link: "content-box",
+                        type: "route"
+                    },
+                ]
+            },
+        ]
+    },*/
+    /*{
+        id: "formElements",
+        label:  tm("formElements"),
+        icon: "edit",
+        link: null,
+        type: "dropdown",
+        links: [
+            {
+                id: "formStructure",
+                label:  tm("formStructure"),
+                icon: null,
+                link: "form-structure",
+                type: "route"
+            },
+            {
+                id: "formInputGroup",
+                label:  tm("formInputGroup"),
+                icon: null,
+                link: "form-input-group",
+                type: "route"
+            },
+            {
+                id: "formSimpleInputs",
+                label:  tm("formSimpleInputs"),
+                icon: null,
+                link: "form-simple-field",
+                type: "route"
+            },
+            {
+                id: "formRepeatableInput",
+                label:  tm("formRepeatableInput"),
+                icon: "retweet",
+                link: "form-repeatable-field",
+                type: "route"
+            },
+            {
+                id: "formDateTimeInput",
+                label:  tm("formDateTimeInput"),
+                icon: "clock",
+                link: "form-date-field",
+                type: "route"
+            },
+            {
+                id: "formSelectInput",
+                label:  tm("formSelectInput"),
+                icon: null,
+                link: "form-select-input",
+                type: "route"
+            }
+        ]
+    },*/
+    /*{
+        id: "externalSources",
+        label:  tm("externalSources"),
+        icon: "code",
+        type: "dropdown",
+        links: [
+            {
+                id: "externalLaravelDocument",
+                label:  tm("externalLaravelDocument"),
+                icon: null,
+                link: "https://laravel.com/docs",
+                type: "simple-link",
+                target: "_blank"
+            },
+            {
+                id: "externalInertiaDocument",
+                label:  tm("externalInertiaDocument"),
+                icon: null,
+                link: "https://inertiajs.com/",
+                type: "simple-link",
+                target: "_blank"
+            },
+            {
+                id: "externalVuejsDocument",
+                label:  tm("externalVuejsDocument"),
+                icon: null,
+                link: "https://v3.vuejs.org/",
+                type: "simple-link",
+                target: "_blank"
+            },
+            {
+                id: "externalTailwindcssDocument",
+                label:  tm("externalTailwindcssDocument"),
+                icon: null,
+                link: "https://tailwindcss.com/docs",
+                type: "simple-link",
+                target: "_blank"
+            }
+        ]
+    }*/];
   });
-  /*Main Menu Footer*/
 
+  /*Main Menu Footer*/
   var mainMenuFooterLinks = (0,vue__WEBPACK_IMPORTED_MODULE_1__.computed)(function () {
-    return [{
-      id: "footerHelp",
-      label: tm("footerHelp"),
-      linkType: "simple-link",
-      link: "https://github.com/sinan-aydogan",
-      icon: "question",
-      target: "_blank"
-    }, {
-      id: "footerSettings",
-      label: tm("footerSettings"),
-      showWhenFolded: true,
-      linkType: "route",
-      link: "settings",
-      icon: "cog"
-    }];
+    return [
+      /*{
+          id: "footerHelp",
+          label:  tm("footerHelp"),
+          linkType: "simple-link",
+          link: "https://github.com/sinan-aydogan",
+          icon: "question",
+          target: "_blank"
+      },
+      {
+          id: "footerSettings",
+          label:  tm("footerSettings"),
+          showWhenFolded: true,
+          linkType: "route",
+          link: "settings",
+          icon: "cog"
+      }*/
+    ];
   });
   return {
     mainMenuLinks: mainMenuLinks,

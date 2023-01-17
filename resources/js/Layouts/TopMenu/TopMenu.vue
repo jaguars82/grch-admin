@@ -63,6 +63,7 @@ provide('topBarConf', topBarConf);
             </svg>
         </div>
         <!--Search Box-->
+        <!--
         <div class="search-box">
             <div
                 @click="searchBar=true"
@@ -81,7 +82,9 @@ provide('topBarConf', topBarConf);
                 </svg>
             </div>
         </div>
+        -->
         <!--Active Team-->
+        <!--
         <div class="active-team">
             <div
                 v-if="$page.props.jetstream.hasTeamFeatures"
@@ -103,12 +106,13 @@ provide('topBarConf', topBarConf);
                 />
             </div>
         </div>
+        -->
         <!--Notifications-->
-        <top-menu-notification/>
+        <!--<top-menu-notification/>-->
         <!--Theme Selector-->
-        <top-menu-theme-selector/>
+        <!--<top-menu-theme-selector/>-->
         <!--Language Selector-->
-        <top-menu-language-selector/>
+        <!--<top-menu-language-selector/>-->
         <!--User Menu-->
         <top-menu-user-menu/>
     </div>

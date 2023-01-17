@@ -11,11 +11,17 @@ import "primevue/resources/primevue.min.css";
 import PrimeVue from 'primevue/config';
 import PrimeVueLocaleEn from "@/Lang/en/prime_vue_locale_en";
 import PrimeVueLocaleRu from "@/Lang/ru/prime_vue_locale_ru";
+import ToastService from 'primevue/toastservice';
+import Toast from 'primevue/toast';
 import Tooltip from 'primevue/tooltip';
+import Button from 'primevue/button';
 import Calendar from "primevue/calendar";
+import Checkbox from 'primevue/checkbox';
+import Fieldset from 'primevue/fieldset';
 import InputText from 'primevue/inputtext';
 import InputNumber from 'primevue/inputnumber';
 import SelectButton from 'primevue/selectbutton';
+import Textarea from 'primevue/textarea';
 
 const PrimeVueLocales = {
     en: PrimeVueLocaleEn,
@@ -60,11 +66,17 @@ createInertiaApp({
             .use(plugin)
             .use(i18n)
             .use(VueHighlightJS)
+            .use(ToastService)
             .directive('tooltip', Tooltip)
+            .component('Button', Button)
             .component('Calendar', Calendar)
+            .component('Checkbox', Checkbox)
+            .component('Fieldset', Fieldset)
             .component('InputText', InputText)
             .component('InputNumber', InputNumber)
             .component('SelectButton', SelectButton)
+            .component('Textarea', Textarea)
+            .component('Toast', Toast)
             .component("icon", FontAwesomeIcon)
             .mixin({ methods: { route } })
             .mount(el);

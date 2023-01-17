@@ -1,6 +1,13 @@
 <template>
     <Head title="Register" />
+    <t-register
+        :bg-image="activeBg"
+        color="solid-purple"
+        :status="status"
+    >
+    </t-register>
 
+    <!--
     <jet-authentication-card>
         <template #logo>
             <jet-authentication-card-logo />
@@ -51,30 +58,34 @@
                 </jet-button>
             </div>
         </form>
-    </jet-authentication-card>
+    </jet-authentication-card>-->
 </template>
 
 <script>
     import { defineComponent } from 'vue'
-    import JetAuthenticationCard from '@/Jetstream/AuthenticationCard.vue'
+    /*import JetAuthenticationCard from '@/Jetstream/AuthenticationCard.vue'
     import JetAuthenticationCardLogo from '@/Jetstream/AuthenticationCardLogo.vue'
     import JetButton from '@/Jetstream/Button.vue'
     import JetInput from '@/Jetstream/Input.vue'
     import JetCheckbox from '@/Jetstream/Checkbox.vue'
     import JetLabel from '@/Jetstream/Label.vue'
-    import JetValidationErrors from '@/Jetstream/ValidationErrors.vue'
+    import JetValidationErrors from '@/Jetstream/ValidationErrors.vue'*/
     import { Head, Link } from '@inertiajs/inertia-vue3';
+
+    /*Components*/
+    import TRegister from "@/Components/Auth/TRegister";
 
     export default defineComponent({
         components: {
             Head,
-            JetAuthenticationCard,
+            TRegister,
+            /*JetAuthenticationCard,
             JetAuthenticationCardLogo,
             JetButton,
             JetInput,
             JetCheckbox,
             JetLabel,
-            JetValidationErrors,
+            JetValidationErrors,*/
             Link,
         },
 
