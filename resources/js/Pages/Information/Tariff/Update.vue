@@ -1,5 +1,4 @@
 <template>
-  <Toast />
   <AppLayout :title="t('tariff.tariifs')">
       <template #header>{{ t("tariff.tariifs") }}</template>
       <template #subHeader>{{ t("tariff.tariifsForm") }}</template>
@@ -11,61 +10,64 @@
         </TBreadcrumb>
       </template>
       <template #default>
-        <div
-          v-for="developer of tariffTable"
-          :key="developer.id"
-        >
-          <p class="font-bold from-neutral-800 text-lg">{{ developer.name }}</p>
-          <div
-            v-for="complex of developer.complexes"
-            :key="complex.id"
+        <Accordion :multiple="true">
+          <AccordionTab
+            :header="developer.name"
+            v-for="developer of tariffTable"
+            :key="developer.id"
           >
-          <Fieldset class="my-2">
-          <template #legend>
-            <div class="field-checkbox">
-              <Checkbox
-                class="mr-1"
-                :inputId="`complex-${complex.id}-flag`"
-                v-model="complex.inTariffTable"
-                :binary="true"
-                v-tooltip="complex.inTariffTable ? t('tariff.removeComplexFromTariff') : t('tariff.addComplexToTariff')"
-                @change="complex.inTariffTable ? onComplexAdd(complex.id) : onComplexRemove(complex.id)"
-              />
-              <label :for="`complex-${complex.id}-flag`">{{ complex.name }}</label>
-            </div>
-          </template>
-              <div
-                class="flex items-end"
-                v-for="(tariff, i) of form[complex.id].tariffs"
-                :key="i"
-              >
-                <TariffFieldsSet
-                  :tariffType="tariff.tariffType"
-                  :amountPercent="tariff.amountPercent"
-                  :amountCurrency="tariff.amountCurrency"
-                  :amountCustom="tariff.amountCustom"
-                  :annotation="tariff.annotation"
-                  @tariffChanged="onTariffChange($event, complex.id, i)"
+            <!--<p class="font-bold from-neutral-800 text-lg">{{ developer.name }}</p>-->
+            <div
+              v-for="complex of developer.complexes"
+              :key="complex.id"
+            >
+            <Fieldset class="my-2">
+            <template #legend>
+              <div class="field-checkbox">
+                <Checkbox
+                  class="mr-1"
+                  :inputId="`complex-${complex.id}-flag`"
+                  v-model="complex.inTariffTable"
+                  :binary="true"
+                  v-tooltip="complex.inTariffTable ? t('tariff.removeComplexFromTariff') : t('tariff.addComplexToTariff')"
+                  @change="complex.inTariffTable ? onComplexAdd(complex.id) : onComplexRemove(complex.id)"
                 />
-                <div class="ml-4">
-                <Button v-if="i > 0" icon="pi pi-times" class="p-button-rounded p-button-danger p-button-outlined" v-tooltip="t('tariff.removeTariff')" @click="onTariffRemove(complex.id, i)" />
+                <label :for="`complex-${complex.id}-flag`">{{ complex.name }}</label>
+              </div>
+            </template>
+                <div
+                  class="flex items-end"
+                  v-for="(tariff, i) of form[complex.id].tariffs"
+                  :key="i"
+                >
+                  <TariffFieldsSet
+                    :tariffType="tariff.tariffType"
+                    :amountPercent="tariff.amountPercent"
+                    :amountCurrency="tariff.amountCurrency"
+                    :amountCustom="tariff.amountCustom"
+                    :annotation="tariff.annotation"
+                    @tariffChanged="onTariffChange($event, complex.id, i)"
+                  />
+                  <div class="ml-4">
+                  <Button v-if="i > 0" icon="pi pi-times" class="p-button-rounded p-button-danger p-button-outlined" v-tooltip="t('tariff.removeTariff')" @click="onTariffRemove(complex.id, i)" />
+                  </div>
                 </div>
-              </div>
-              <div class="my-2 flex items-center">
-                <Button icon="pi pi-plus" class="p-button-rounded p-button-outlined" v-tooltip.top="t('tariff.addTariff')" @click="onTariffAdd(complex.id)" />
-                <span class="px-2">- Добавить ещё тариф в этот ЖК</span>
-              </div>
-              <div class="mt-2 flex flex-col">
-                <label for="`payterms-${complex.id}`">Сроки выплаты вознаграждения</label>
-                <InputText
-                  :inputId="`payterms-${complex.id}`"
-                  v-model="form[complex.id].termsOfPayment"
-                  :placeholder="t('tariff.paytermsInputPlaceholder')"
-                />
-              </div>
-          </Fieldset>
-          </div>
-        </div>
+                <div class="my-2 flex items-center">
+                  <Button icon="pi pi-plus" class="p-button-rounded p-button-outlined" v-tooltip.top="t('tariff.addTariff')" @click="onTariffAdd(complex.id)" />
+                  <span class="px-2">- Добавить ещё тариф в этот ЖК</span>
+                </div>
+                <div class="mt-2 flex flex-col">
+                  <label for="`payterms-${complex.id}`">Сроки выплаты вознаграждения</label>
+                  <InputText
+                    :inputId="`payterms-${complex.id}`"
+                    v-model="form[complex.id].termsOfPayment"
+                    :placeholder="t('tariff.paytermsInputPlaceholder')"
+                  />
+                </div>
+            </Fieldset>
+            </div>
+          </AccordionTab>
+        </Accordion>
         <div class="field-checkbox">
           <Checkbox
             class="mr-2"
@@ -134,7 +136,7 @@ export default {
        * to each newbuilding complex
        */
       const tariffTable = computed(() => {
-        const dbTariffTable = JSON.parse(props.dbTable.tariff_table);
+        const dbTariffTable = props.dbTable ? JSON.parse(props.dbTable.tariff_table) : [];
         const processedTable = [];
         props.table.forEach(developer => {
           developer.complexes.forEach(complex => {
@@ -171,7 +173,7 @@ export default {
       const form = ref({});
 
       const onTariffChange = (e, complexId, i) => {
-        // console.log(e.tariffType.value);
+        // console.log(e.amountPercent);
         // console.log(complexId);
         // console.log(i);
         form.value[complexId].tariffs[i].tariffType = e.tariffType.value;
@@ -193,44 +195,39 @@ export default {
         complexes: {},
         changes: '',
         createNewTable: false,
-      }); 
+      });
+
+      const toast = useToast();
 
       const onTariffTableSubmit = () => {
         if (complexesInTariffTable.value.length > 0) {
           complexesInTariffTable.value.forEach(complexId => {
-            // dataToSubmit.value.complexes[complexId] = form.value[complexId];
             dataToSubmit.complexes[complexId] = form.value[complexId];
           });
         }
-        //console.log(dataToSubmit.value.complexes);
         dataToSubmit.post(route("tariff-update"), {
           onSuccess: () => {
-            const toast = useToast();
-            toast.add({severity:'info', summary: 'Info Message', detail:'Message Content', life: 3000});
+            toast.add({severity:'success', summary: 'Изменения сохранены', detail:'Вы успешно отредактировали таблицу тарифов', life: 5000});
+          },
+          onError: (error) => {
+            toast.add({severity:'error', summary: 'Произошла ошибка', detail:'Изменения не были сохранены', life: 5000});
           }
         });
       }
 
       onBeforeMount(() => {
-        const dbTariffTable = JSON.parse(props.dbTable.tariff_table);
+        const dbTariffTable = props.dbTable ? JSON.parse(props.dbTable.tariff_table) : [];
         props.complexes.forEach(complex => {
           if (complex.id in dbTariffTable) {
-            
-            //form.value[complex.id] = { tariffs: [{ tariffType: '', amountPercent: '', amountCurrency: '', amountCustom: '', annotation: '' }], termsOfPayment: '' };
             complexesInTariffTable.value.push(complex.id);
             form.value[complex.id] = {
               tariffs: dbTariffTable[complex.id].tariffs,
               termsOfPayment: dbTariffTable[complex.id].termsOfPayment
             }
-            // console.log(form.value[complex.id]);
-            //form.value[complex.id].tariffs = dbTariffTable.tariffs;
-            //form.value[complex.id].termsOfPayment = dbTariffTable.termsOfPayment;
           } else {
             form.value[complex.id] = { tariffs: [{ tariffType: 'percent', amountPercent: '', amountCurrency: '', amountCustom: '', annotation: '' }], termsOfPayment: '' };
           }
-          // form.value.push(complex);
         });
-        // console.log(form.value);
       });
 
       return {t, breadcrumbs, tariffTable, form, onComplexAdd, onComplexRemove, onTariffChange, onTariffAdd, onTariffRemove, onTariffTableSubmit, dataToSubmit }

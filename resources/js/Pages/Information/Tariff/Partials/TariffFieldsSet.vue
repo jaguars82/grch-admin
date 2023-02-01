@@ -5,15 +5,13 @@
     <label for="amount-percent">{{ t("tariff.inPercent") }}</label>
     <InputNumber
       inputId="amount-percent"
-      v-model="fields.amountPercent" :step="0.01"
+      v-model="fields.amountPercent"
+      :step="0.01"
       :min="0"
       :max="100"
-      mode="decimal"
-      :minFractionDigits="0"
       :maxFractionDigits="2"
       :showButtons="true"
       :placeholder="t('tariff.percentInputPlaceholder')"
-      @input="onTariffChange"
     />
   </div>
 
@@ -26,7 +24,6 @@
       :min="0"
       :showButtons="true"
       :placeholder="t('tariff.currencyInputPlaceholder')"
-      @input="onTariffChange"
     />
   </div>
 
@@ -36,7 +33,6 @@
       inputId="amount-custom"
       v-model="fields.amountCustom"
       :placeholder="t('tariff.customInputPlaceholder')"
-      @input="onTariffChange"
     />
   </div>
 
@@ -51,7 +47,6 @@
     optionLabel="name"
     dataKey="value"
     v-tooltip.bottom="t('tariff.tariffToggleTooltip')"
-    @change="onTariffChange"
   >
     <template #option="slotProps">
       <div class="w-full h-full" v-tooltip.top="slotProps.option.name">
@@ -66,7 +61,6 @@
       inputId="annotation"
       v-model="fields.annotation"
       :placeholder="t('tariff.annotationInputPlaceholder')"
-      @input="onTariffChange"
     />
   </div>
 
@@ -74,7 +68,7 @@
 </template>
 
 <script>
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import { useI18n } from "vue-i18n";
 import { adminGeneralTranslates } from "@/Lang/languages";
 
@@ -123,11 +117,11 @@ export default {
       { icon: 'pen-to-square', value: 'custom', name: t("tariff.inCustomVal")  },
     ]);
 
-    const onTariffChange = () => {
+    watch(fields.value, () => {
       emit('tariffChanged', fields.value);
-    }
+    });
 
-    return { fields, t, typeOptions, onTariffChange }
+    return { fields, t, typeOptions }
   },
 }
 </script>

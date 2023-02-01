@@ -11,6 +11,8 @@ import "primevue/resources/primevue.min.css";
 import PrimeVue from 'primevue/config';
 import PrimeVueLocaleEn from "@/Lang/en/prime_vue_locale_en";
 import PrimeVueLocaleRu from "@/Lang/ru/prime_vue_locale_ru";
+import Accordion from 'primevue/accordion';
+import AccordionTab from 'primevue/accordiontab';
 import ToastService from 'primevue/toastservice';
 import Toast from 'primevue/toast';
 import Tooltip from 'primevue/tooltip';
@@ -69,6 +71,8 @@ createInertiaApp({
             .use(ToastService)
             .directive('tooltip', Tooltip)
             .component('Button', Button)
+            .component('Accordion', Accordion)
+            .component('AccordionTab', AccordionTab)
             .component('Calendar', Calendar)
             .component('Checkbox', Checkbox)
             .component('Fieldset', Fieldset)
