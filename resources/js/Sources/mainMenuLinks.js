@@ -38,7 +38,7 @@ export default function ({roles,permissions}) {
                 target: "_blank",
                 visibleFor: roles.includes('Super Admin'),
             },*/
-            {
+            /*{
                 id: "authPages",
                 label:  tm("authPages"),
                 icon: "tv",
@@ -81,8 +81,8 @@ export default function ({roles,permissions}) {
                         type: "route"
                     }
                 ]
-            },
-            {
+            },*/
+            /*{
                 id: "components",
                 label:  tm("components"),
                 icon: "plug",
@@ -248,8 +248,8 @@ export default function ({roles,permissions}) {
                         ]
                     },
                 ]
-            },
-            {
+            },*/
+            /*{
                 id: "formElements",
                 label:  tm("formElements"),
                 icon: "edit",
@@ -299,8 +299,8 @@ export default function ({roles,permissions}) {
                         type: "route"
                     }
                 ]
-            },
-            {
+            },*/
+            /*{
                 id: "externalSources",
                 label:  tm("externalSources"),
                 icon: "code",
@@ -339,14 +339,14 @@ export default function ({roles,permissions}) {
                         target: "_blank"
                     }
                 ]
-            }
+            }*/
         ]
     });
 
     /*Main Menu Footer*/
     const mainMenuFooterLinks = computed(()=>{
         return [
-            {
+            /*{
                 id: "footerHelp",
                 label:  tm("footerHelp"),
                 linkType: "simple-link",
@@ -361,7 +361,7 @@ export default function ({roles,permissions}) {
                 linkType: "route",
                 link: "settings",
                 icon: "cog"
-            }
+            }*/
         ]
     });
 

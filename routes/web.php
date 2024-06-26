@@ -75,7 +75,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     /* Admin Panel Pages */
     Route::get('tariff', [\App\Http\Controllers\TariffController::class, 'edit'])->name('tariff-edit');
-
+    Route::post('tariff', [\App\Http\Controllers\TariffController::class, 'update'])->name('tariff-update');
+    //Route::match(['get', 'post'], 'tariff', [\App\Http\Controllers\TariffController::class, 'edit'])->name('tariff-edit');
 
     /*This pages for example, you can delete when you design the your system*/
     //Example Pages

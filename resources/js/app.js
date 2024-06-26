@@ -4,6 +4,32 @@ import { createApp, h } from "vue";
 import { createInertiaApp } from "@inertiajs/inertia-vue3";
 import { InertiaProgress } from "@inertiajs/progress";
 
+/* Vue Prime Library */
+import "primevue/resources/themes/saga-blue/theme.css";
+import "primevue/resources/primevue.min.css";
+// import "primeicons/primeicons.css";
+import PrimeVue from 'primevue/config';
+import PrimeVueLocaleEn from "@/Lang/en/prime_vue_locale_en";
+import PrimeVueLocaleRu from "@/Lang/ru/prime_vue_locale_ru";
+import Accordion from 'primevue/accordion';
+import AccordionTab from 'primevue/accordiontab';
+import ToastService from 'primevue/toastservice';
+import Toast from 'primevue/toast';
+import Tooltip from 'primevue/tooltip';
+import Button from 'primevue/button';
+import Calendar from "primevue/calendar";
+import Checkbox from 'primevue/checkbox';
+import Fieldset from 'primevue/fieldset';
+import InputText from 'primevue/inputtext';
+import InputNumber from 'primevue/inputnumber';
+import SelectButton from 'primevue/selectbutton';
+import Textarea from 'primevue/textarea';
+
+const PrimeVueLocales = {
+    en: PrimeVueLocaleEn,
+    ru: PrimeVueLocaleRu
+}
+
 /* FontAwesome */
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import "@/Sources/icons";
@@ -15,9 +41,9 @@ import generalLangRu from "@/Lang/ru/general_lang_ru";
 
 const i18n = createI18n({
     legacy: false,
-    locale: "en",
-    fallbackLocale: "en",
-    fallbackRoot: "en",
+    locale: "ru",
+    fallbackLocale: "ru",
+    fallbackRoot: "ru",
     messages: {
         en: generalLangEn,
         ru: generalLangRu,
@@ -35,9 +61,26 @@ createInertiaApp({
     resolve: (name) => require(`./Pages/${name}.vue`),
     setup({ el, app, props, plugin }) {
         return createApp({ render: () => h(app, props) })
+            .use(PrimeVue, {
+                //locale: PrimeVueLocales[i18n.locale]
+                locale: PrimeVueLocales.ru
+            })
             .use(plugin)
             .use(i18n)
             .use(VueHighlightJS)
+            .use(ToastService)
+            .directive('tooltip', Tooltip)
+            .component('Button', Button)
+            .component('Accordion', Accordion)
+            .component('AccordionTab', AccordionTab)
+            .component('Calendar', Calendar)
+            .component('Checkbox', Checkbox)
+            .component('Fieldset', Fieldset)
+            .component('InputText', InputText)
+            .component('InputNumber', InputNumber)
+            .component('SelectButton', SelectButton)
+            .component('Textarea', Textarea)
+            .component('Toast', Toast)
             .component("icon", FontAwesomeIcon)
             .mixin({ methods: { route } })
             .mount(el);

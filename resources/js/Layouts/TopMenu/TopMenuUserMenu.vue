@@ -33,37 +33,37 @@
         <template #default>
             <div class="top-menu-dropdown-content-wrapper-transparent min-w-[13rem]">
                 <!-- Account Management -->
-                <div class="top-menu-dropdown-header border-t rounded-t" v-text="tm('manageAccount')"/>
+                <!--<div class="top-menu-dropdown-header border-t rounded-t" v-text="tm('manageAccount')"/>-->
 
                 <!--Profile-->
-                <Link :href="route('profile.show')">
+                <!--<Link :href="route('profile.show')">
                     <div class="top-menu-dropdown-item" v-text="tm('profile')"/>
-                </Link>
+                </Link>-->
 
                 <!--API Tokens-->
-                <Link v-if="$page.props.jetstream.hasApiFeatures"
+                <!--<Link v-if="$page.props.jetstream.hasApiFeatures"
                       :href="route('api-tokens.index')">
                     <div class="top-menu-dropdown-item" v-text="tm('api')"/>
-                </Link>
+                </Link>-->
 
                 <!-- Team Management -->
-                <template v-if="$page.props.jetstream.hasTeamFeatures">
+                <!--<template v-if="$page.props.jetstream.hasTeamFeatures">
                     <div class="dropdown-item-separator"/>
-                    <div class="top-menu-dropdown-header" v-text="tm('manageTeam')"/>
+                    <div class="top-menu-dropdown-header" v-text="tm('manageTeam')"/>-->
 
                     <!-- Team Settings -->
-                    <Link :href="route('teams.show', $page.props.user.current_team)">
+                    <!--<Link :href="route('teams.show', $page.props.user.current_team)">
                         <div class="top-menu-dropdown-item" v-text="tm('teamSettings')"/>
-                    </Link>
+                    </Link>-->
 
                     <!--Create New Team-->
-                    <Link v-if="$page.props.jetstream.canCreateTeams"
+                    <!--<Link v-if="$page.props.jetstream.canCreateTeams"
                           :href="route('teams.create')">
                         <div class="top-menu-dropdown-item" v-text="tm('createNewTeam')"/>
-                    </Link>
+                    </Link>-->
 
                     <!-- Team Switcher -->
-                    <div class="dropdown-item-separator"/>
+                    <!--<div class="dropdown-item-separator"/>
                     <div class="top-menu-dropdown-header" v-text="tm('switchTeams')"/>
                     <div class="top-menu-dropdown-item">
                         <template v-for="team in $page.props.user.all_teams" :key="team.id">
@@ -89,9 +89,9 @@
                                 </button>
                             </form>
                         </template>
-                    </div>
+                    </div>-->
 
-                </template>
+                <!--</template>-->
 
                 <!-- Authentication -->
                 <div class="dropdown-item-separator"/>

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Tariff;
+use App\Models\Agregator\Tariff;
 use App\Models\Agregator\Developer;
 use App\Models\Agregator\NewbuildingComplex;
 use Illuminate\Http\Request;
@@ -18,28 +18,46 @@ class TariffController extends Controller
     public function edit(Request $request)
     {
         $table = array();
+        $complexes = array();
 
         $developers = Developer::all()->sortBy('name');
 
         foreach ($developers as $developer) {
             $developer['complexes'] = $developer->newbuildingComplexes;
-            //echo '<pre>'; var_dump($developer['complexes'] ); echo '</pre>';
             array_push($table, $developer);
+            foreach ($developer->newbuildingComplexes as $complex) {
+                array_push($complexes, $complex);
+            }
         }
 
+        $dbTable = Tariff::latest()->first();
+
         return Inertia::render('Information/Tariff/Update', [
-            'table' => $table
+            'table' => $table,
+            'complexes' => $complexes,
+            'dbTable' => $dbTable
         ]);
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Inertia\Response
      */
-    public function create()
+    public function update(Request $request)
     {
-        //
+        //echo '<pre>'; var_dump($request->input()); echo '</pre>';
+        if ($request->input('createNewTable') === true) {
+            $tariff = new Tariff;
+        } else {
+            $tariff = Tariff::latest()->first();
+        }
+
+        $tariff->tariff_table = json_encode($request->input('complexes'));
+        $tariff->changes = $request->input('changes');
+        $tariff->save();
+
+        return redirect()->route('tariff-edit');
     }
 
     /**
@@ -60,18 +78,6 @@ class TariffController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(DemoContent $demoContent)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\DemoContent  $demoContent
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, DemoContent $demoContent)
     {
         //
     }

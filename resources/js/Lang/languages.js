@@ -47,11 +47,20 @@ const notificationTranslates = {
     ru: notificationLangRu,
 };
 
+/* Admin Panel General Translates */
+import adminGeneralLangEn from "@/Lang/en/admin_general_lang_en";
+import adminGeneralLangRu from "@/Lang/ru/admin_general_lang_ru";
+const adminGeneralTranslates = {
+    en: adminGeneralLangEn,
+    ru: adminGeneralLangRu,
+}
+
 export {
     languages,
     flags,
     authTranslates,
     mainMenuTranslates,
     userMenuTranslates,
-    notificationTranslates
+    notificationTranslates,
+    adminGeneralTranslates
 };

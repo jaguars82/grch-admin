@@ -1,10 +1,10 @@
 /*Default Settings*/
 const appConf = {
-    appName: 'TailAdmin',
-    catchPhrase: 'Peace at Home, Peace in the World',
+    appName: '',
+    catchPhrase: '',
     logo: {
-      dark: '/img/dark-logo.svg',
-      light: '/img/light-logo.svg'
+      dark: '/img/logo.svg',
+      light: '/img/logo.svg'
     },
     logoAreaClasses: null,
     appNameClasses: null,
@@ -34,8 +34,8 @@ const mainMenuConf = {
     catchPhrase: null,
     umay: {
         logo: {
-            dark: '/img/dark-logo.svg',
-            light: '/img/dark-logo.svg',
+            dark: '/img/logo.svg',
+            light: '/img/logo.svg',
         },
         logoAreaRadius: null,
         logoAreaClasses: ['flex', 'flex-col', 'justify-center', 'items-center', 'space-x-6', 'bg-blue-500'],
@@ -61,8 +61,8 @@ const mainMenuConf = {
     },
     abay: {
         logo: {
-            dark: '/img/rose-logo.svg',
-            light: '/img/rose-logo.svg',
+            dark: '/img/logo.svg',
+            light: '/img/logo.svg',
         },
         logoAreaRadius: null,
         logoAreaClasses: ['flex', 'flex-col', 'justify-center', 'items-center', 'space-x-6', 'bg-blue-500'],
@@ -96,21 +96,21 @@ const topBarConf = {
 };
 
 const footerConf = {
-    visible: true,
+    visible: false,
     content: "<a\n" +
         "              class=\"text-blue-600 hover:underline\"\n" +
-        "              href=\"https://tailadmin.dev/\"\n" +
+        "              href=\"http://houston.grch.ru/\"\n" +
         "              target=\"_blank\"\n" +
         "            >\n" +
-        "              TailAdmin v2\n" +
+        "              Панель управления GRCH\n" +
         "              </a>\n" +
         "            <span>by</span>\n" +
         "            <a\n" +
         "              class=\"text-teal-400 hover:underline\"\n" +
-        "              href=\"https://github.com/sinan-aydogan\"\n" +
+        "              href=\"https://github.com/jaguars82\"\n" +
         "              target=\"_blank\"\n" +
         "            >\n" +
-        "              Sinan AYDOĞAN\n" +
+        "              Egor SECHIN\n" +
         "            </a>"
 };
 

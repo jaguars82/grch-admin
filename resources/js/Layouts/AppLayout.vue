@@ -1,4 +1,5 @@
 <template>
+    <Toast />
     <!--Browser Title-->
     <Head :title="title" />
     <!--TODO: Convert to Announcement Bar Component(TA-23)-->
