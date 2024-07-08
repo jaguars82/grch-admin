@@ -22,8 +22,13 @@ import Checkbox from 'primevue/checkbox';
 import Fieldset from 'primevue/fieldset';
 import InputText from 'primevue/inputtext';
 import InputNumber from 'primevue/inputnumber';
+import MultiSelect from 'primevue/multiselect';
+import ProgressSpinner from 'primevue/progressspinner';
 import SelectButton from 'primevue/selectbutton';
 import Textarea from 'primevue/textarea';
+import DataTable from 'primevue/datatable';
+import Column from 'primevue/column';
+import Paginator from 'primevue/paginator';
 
 const PrimeVueLocales = {
     en: PrimeVueLocaleEn,
@@ -78,9 +83,14 @@ createInertiaApp({
             .component('Fieldset', Fieldset)
             .component('InputText', InputText)
             .component('InputNumber', InputNumber)
+            .component('MultiSelect', MultiSelect)
+            .component('ProgressSpinner', ProgressSpinner)
             .component('SelectButton', SelectButton)
             .component('Textarea', Textarea)
             .component('Toast', Toast)
+            .component('DataTable', DataTable)
+            .component('Column', Column)
+            .component('Paginator', Paginator)
             .component("icon", FontAwesomeIcon)
             .mixin({ methods: { route } })
             .mount(el);

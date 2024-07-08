@@ -1,4 +1,8 @@
 const adminGeneralLangRu = {
+  statistics: {
+    statistics: 'Статистика',
+    bookingTickets: 'Заявки на бронирование',
+  },
   tariff: {
     tariifs: "Тарифы",
     tariifsForm: "форма редактирования тарифной таблицы",

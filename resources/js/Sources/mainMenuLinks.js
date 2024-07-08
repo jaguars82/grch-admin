@@ -29,6 +29,22 @@ export default function ({roles,permissions}) {
                     },
                 ]
             },
+            {
+                id: "StatResources",
+                label: 'Большой брат',
+                icon: "eye",
+                link: null,
+                type: "dropdown",
+                links: [
+                    {
+                        id:"StatBooking",
+                        label: 'Заявки',
+                        icon: "bookmark",
+                        link: "stats-booking",
+                        type: "route"
+                    },
+                ]
+            },
             /*{
                 id: "externalGitHubRepo",
                 label:  tm("externalGitHubRepo"),

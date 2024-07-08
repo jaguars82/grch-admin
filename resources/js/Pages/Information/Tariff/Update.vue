@@ -21,20 +21,20 @@
               v-for="complex of developer.complexes"
               :key="complex.id"
             >
-            <Fieldset class="my-2">
-            <template #legend>
-              <div class="field-checkbox">
-                <Checkbox
-                  class="mr-1"
-                  :inputId="`complex-${complex.id}-flag`"
-                  v-model="complex.inTariffTable"
-                  :binary="true"
-                  v-tooltip="complex.inTariffTable ? t('tariff.removeComplexFromTariff') : t('tariff.addComplexToTariff')"
-                  @change="complex.inTariffTable ? onComplexAdd(complex.id) : onComplexRemove(complex.id)"
-                />
-                <label :for="`complex-${complex.id}-flag`">{{ complex.name }}</label>
-              </div>
-            </template>
+              <Fieldset class="my-2">
+                <template #legend>
+                  <div class="field-checkbox">
+                    <Checkbox
+                      class="mr-1"
+                      :inputId="`complex-${complex.id}-flag`"
+                      v-model="complex.inTariffTable"
+                      :binary="true"
+                      v-tooltip="complex.inTariffTable ? t('tariff.removeComplexFromTariff') : t('tariff.addComplexToTariff')"
+                      @change="complex.inTariffTable ? onComplexAdd(complex.id) : onComplexRemove(complex.id)"
+                    />
+                    <label :for="`complex-${complex.id}-flag`">{{ complex.name }}</label>
+                  </div>
+                </template>
                 <div
                   class="flex items-end"
                   v-for="(tariff, i) of form[complex.id].tariffs"
@@ -64,7 +64,7 @@
                     :placeholder="t('tariff.paytermsInputPlaceholder')"
                   />
                 </div>
-            </Fieldset>
+              </Fieldset>
             </div>
           </AccordionTab>
         </Accordion>
@@ -126,10 +126,10 @@ export default {
       });
 
       const breadcrumbs = [
-        {key: 'home', label: 'Главная', link: '/', active: false},
-        {key: 'information', label: 'Информация', link: '/information', active: false},
-        {key: 'tariff', label: 'Тарифы', link: '', active: true, activeColor: 'solid-red'}
-      ]
+        { key: 'home', label: 'Главная', link: '/', active: false },
+        { key: 'information', label: 'Информация', link: '/information', active: false },
+        { key: 'tariff', label: 'Тарифы', link: '', active: true, activeColor: 'solid-red' }
+      ];
 
       /**
        * add information about current tariffs
