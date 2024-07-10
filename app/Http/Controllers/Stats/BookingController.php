@@ -50,7 +50,7 @@ class BookingController extends Controller
             $statuses[$status] = Application::$status[$status];
         }
 
-        $selectFields = ['application.*', 'application_history.made_at'];
+        $selectFields = ['application.*', 'application_history.action', 'application_history.made_at'];
         
         $query = Application::join('application_history', 'application_history.application_id', '=', 'application.id')
             ->with('agency', 'developer');

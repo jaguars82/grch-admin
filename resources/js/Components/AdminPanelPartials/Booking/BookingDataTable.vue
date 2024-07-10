@@ -16,11 +16,16 @@
         {{ dateTimeISO8601toDMY(slotProps.data.created_at) }}
       </template>
     </Column>
+    <Column field="history_status" header="Найдена по статусу">
+      <template #body="slotProps">
+        <span>{{ statuses[slotProps.data.action] }}</span>
+        <br />
+        <span>(обновлен {{ dateTimeYMDtoDMY(slotProps.data.made_at) }})</span>
+      </template>
+    </Column>
     <Column field="current_status" header="Текущий статус">
       <template #body="slotProps">
         <span>{{ statuses[slotProps.data.status] }}</span>
-        <br />
-        <span>(обновлен {{ dateTimeYMDtoDMY(slotProps.data.made_at) }})</span>
       </template>
     </Column>
   </DataTable>
