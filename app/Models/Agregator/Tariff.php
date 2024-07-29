@@ -20,6 +20,6 @@ class Tariff extends Model
      *
      * @var string[]
      */
-    protected $fillable = ['tariff_table', 'change', 'created_at', 'updated_at'];
+    protected $fillable = ['tariff_table', 'developers_in_statistics', 'change', 'created_at', 'updated_at'];
 
 }

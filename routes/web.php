@@ -74,8 +74,17 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     });
 
     /* Admin Panel Pages */
+
+    // Info Section
+    // Tariff
     Route::get('tariff', [\App\Http\Controllers\TariffController::class, 'edit'])->name('tariff-edit');
     Route::post('tariff', [\App\Http\Controllers\TariffController::class, 'update'])->name('tariff-update');
+
+    // Statistics Section
+    // Booking
+    Route::get('/stats/booking', [\App\Http\Controllers\Stats\BookingController::class, 'index'])->name('stats-booking');
+
+
     //Route::match(['get', 'post'], 'tariff', [\App\Http\Controllers\TariffController::class, 'edit'])->name('tariff-edit');
 
     /*This pages for example, you can delete when you design the your system*/

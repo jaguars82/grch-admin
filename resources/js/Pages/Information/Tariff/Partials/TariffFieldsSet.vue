@@ -1,10 +1,9 @@
 <template>
 <div class="flex items-end">
-  
   <div v-if="fields.tariffType && fields.tariffType.value === 'percent'" class="flex flex-col">
-    <label for="amount-percent">{{ t("tariff.inPercent") }}</label>
+    <label :for="`amount-percent-${objectId}-${iterator}`">{{ t("tariff.inPercent") }}</label>
     <InputNumber
-      inputId="amount-percent"
+      :inputId="`amount-percent-${objectId}-${iterator}`"
       v-model="fields.amountPercent"
       :step="0.01"
       :min="0"
@@ -16,9 +15,9 @@
   </div>
 
   <div v-else-if="fields.tariffType && fields.tariffType.value === 'currency'" class="flex flex-col">
-    <label for="amount-currency">{{ t("tariff.inCurrency") }}</label>
+    <label :for="`amount-currency-${objectId}-${iterator}`">{{ t("tariff.inCurrency") }}</label>
     <InputNumber
-      inputId="amount-currency"
+      :inputId="`amount-currency-${objectId}-${iterator}`"
       v-model="fields.amountCurrency"
       :step="1"
       :min="0"
@@ -28,9 +27,9 @@
   </div>
 
   <div v-else-if="fields.tariffType && fields.tariffType.value === 'custom'" class="flex flex-col">
-    <label for="amount-custom">{{ t("tariff.inCustomVal") }}</label>
+    <label :for="`amount-custom-${objectId}-${iterator}`">{{ t("tariff.inCustomVal") }}</label>
     <InputText
-      inputId="amount-custom"
+      :inputId="`amount-custom-${objectId}-${iterator}`"
       v-model="fields.amountCustom"
       :placeholder="t('tariff.customInputPlaceholder')"
     />
@@ -56,9 +55,9 @@
   </SelectButton>
 
   <div class="flex flex-col">
-    <label for="annotation">{{ t("tariff.annotationInputLabel") }}</label>
+    <label :for="`annotation-${objectId}-${iterator}`">{{ t("tariff.annotationInputLabel") }}</label>
     <InputText
-      inputId="annotation"
+      :inputId="`annotation-${objectId}-${iterator}`"
       v-model="fields.annotation"
       :placeholder="t('tariff.annotationInputPlaceholder')"
     />
@@ -75,20 +74,25 @@ import { adminGeneralTranslates } from "@/Lang/languages";
 export default {
   neme: "TariffFieldsSet",
   props: {
+    objectId: [Number, String],
+    iterator: {
+      type: Number,
+      default: 0
+    },
     tariffType: {
       type: String,
       default: 'percent'
     },
     amountPercent: {
-      type: Number,
+      type: [Number, String],
       default: 0
     },
     amountCurrency: {
-      type: Number,
+      type: [Number, String],
       default: 0
     },
     amountCustom: {
-      type: String || Number,
+      type: [Number, String],
       default: ''
     },
     annotation: {
@@ -105,8 +109,8 @@ export default {
 
     const fields = ref({
       tariffType: { value: props.tariffType },
-      amountPercent: props.amountPercent,
-      amountCurrency: props.amountCurrency,
+      amountPercent: props.amountPercent ? props.amountPercent : 0,
+      amountCurrency: props.amountCurrency ? props.amountCurrency : 0,
       amountCustom: props.amountCustom,
       annotation: props.annotation
     });

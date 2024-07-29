@@ -13,6 +13,7 @@ import PrimeVueLocaleEn from "@/Lang/en/prime_vue_locale_en";
 import PrimeVueLocaleRu from "@/Lang/ru/prime_vue_locale_ru";
 import Accordion from 'primevue/accordion';
 import AccordionTab from 'primevue/accordiontab';
+import Card from 'primevue/card';
 import ToastService from 'primevue/toastservice';
 import Toast from 'primevue/toast';
 import Tooltip from 'primevue/tooltip';
@@ -22,8 +23,13 @@ import Checkbox from 'primevue/checkbox';
 import Fieldset from 'primevue/fieldset';
 import InputText from 'primevue/inputtext';
 import InputNumber from 'primevue/inputnumber';
+import MultiSelect from 'primevue/multiselect';
+import ProgressSpinner from 'primevue/progressspinner';
 import SelectButton from 'primevue/selectbutton';
 import Textarea from 'primevue/textarea';
+import DataTable from 'primevue/datatable';
+import Column from 'primevue/column';
+import Paginator from 'primevue/paginator';
 
 const PrimeVueLocales = {
     en: PrimeVueLocaleEn,
@@ -73,14 +79,20 @@ createInertiaApp({
             .component('Button', Button)
             .component('Accordion', Accordion)
             .component('AccordionTab', AccordionTab)
+            .component('Card', Card)
             .component('Calendar', Calendar)
             .component('Checkbox', Checkbox)
             .component('Fieldset', Fieldset)
             .component('InputText', InputText)
             .component('InputNumber', InputNumber)
+            .component('MultiSelect', MultiSelect)
+            .component('ProgressSpinner', ProgressSpinner)
             .component('SelectButton', SelectButton)
             .component('Textarea', Textarea)
             .component('Toast', Toast)
+            .component('DataTable', DataTable)
+            .component('Column', Column)
+            .component('Paginator', Paginator)
             .component("icon", FontAwesomeIcon)
             .mixin({ methods: { route } })
             .mount(el);

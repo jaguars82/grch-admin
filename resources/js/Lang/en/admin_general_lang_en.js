@@ -1,4 +1,8 @@
 const adminGeneralLangEn = {
+    statistics: {
+      statistics: 'Statistics',
+      bookingTickets: 'Booking requests',
+    },
     tariff: {
       tariifs: "Tariffs",
       tariifsForm: "tariff table form",
