@@ -46,7 +46,6 @@ class TariffController extends Controller
      */
     public function update(Request $request)
     {
-        //echo '<pre>'; var_dump($request->input()); echo '</pre>';
         if ($request->input('createNewTable') === true) {
             $tariff = new Tariff;
         } else {
@@ -54,6 +53,7 @@ class TariffController extends Controller
         }
 
         $tariff->tariff_table = json_encode($request->input('complexes'));
+        $tariff->developers_in_statistics = json_encode($request->input('developers_in_statistics'));
         $tariff->changes = $request->input('changes');
         $tariff->save();
 

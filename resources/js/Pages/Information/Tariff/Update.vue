@@ -12,11 +12,24 @@
       <template #default>
         <Accordion :multiple="true">
           <AccordionTab
-            :header="developer.name"
             v-for="developer of tariffTable"
+            :header="developer.name"
             :key="developer.id"
           >
-            <!--<p class="font-bold from-neutral-800 text-lg">{{ developer.name }}</p>-->
+            <Fieldset class="mb-5" legend="Статистика сделок по застройщику">
+              <Checkbox
+                class="mr-1"
+                :inputId="`developer-${developer.id}-stats`"
+                v-model="developersStatisticsShow[developer.id]"
+                :binary="true"
+                v-tooltip="developerInStatistics(developer.id) ? 'Отключить статистику сделок' : 'Включить статистику сделок в тарифной таблице'"
+                @change="developerInStatistics(developer.id) ? onDeveloperStatOff(developer.id) : onDeveloperStatOn(developer.id)"
+              />
+              <label :for="`developer-${developer.id}-stats`">Отображать в тарифной таблице</label>
+            </Fieldset>
+
+            <p class="text-lg font-semibold">Жилые комплексы ({{ developer.complexes.length }})</p>
+
             <div
               v-for="complex of developer.complexes"
               :key="complex.id"
@@ -41,6 +54,8 @@
                   :key="i"
                 >
                   <TariffFieldsSet
+                    :objectId="complex.id"
+                    :iterator="i"
                     :tariffType="tariff.tariffType"
                     :amountPercent="tariff.amountPercent"
                     :amountCurrency="tariff.amountCurrency"
@@ -57,7 +72,7 @@
                   <span class="px-2">- Добавить ещё тариф в этот ЖК</span>
                 </div>
                 <div class="mt-2 flex flex-col">
-                  <label for="`payterms-${complex.id}`">Сроки выплаты вознаграждения</label>
+                  <label :for="`payterms-${complex.id}`">Сроки выплаты вознаграждения</label>
                   <InputText
                     :inputId="`payterms-${complex.id}`"
                     v-model="form[complex.id].termsOfPayment"
@@ -109,8 +124,8 @@ export default {
       default: []
     },
     dbTable: {
-      type: Array,
-      default: []
+      type: Object,
+      default: {}
     }
   },
   components: {
@@ -170,12 +185,29 @@ export default {
         }
       }
 
+      
+      const developersStatisticsShow = ref({});
+
+      /* Developer IDies to show deal statistics in tariff-table */
+      const developersStatisticsShowIdies = ref([]);
+
+      /* Add a developer to the statistics */
+      const onDeveloperStatOn = (developerId) => {
+        developersStatisticsShowIdies.value.push(developerId);
+      }
+
+      /* Remove a developer from the statistics */
+      const onDeveloperStatOff = (developerId) => {
+        developersStatisticsShowIdies.value.splice(developersStatisticsShowIdies.value.indexOf(developerId), 1);
+      }
+
+      const developerInStatistics = (developerId) => {
+        return developersStatisticsShowIdies.value.includes(developerId) ? true : false;
+      }
+
       const form = ref({});
 
       const onTariffChange = (e, complexId, i) => {
-        // console.log(e.amountPercent);
-        // console.log(complexId);
-        // console.log(i);
         form.value[complexId].tariffs[i].tariffType = e.tariffType.value;
         form.value[complexId].tariffs[i].amountPercent = e.amountPercent;
         form.value[complexId].tariffs[i].amountCurrency = e.amountCurrency;
@@ -193,6 +225,7 @@ export default {
 
       const dataToSubmit = useForm({
         complexes: {},
+        developers_in_statistics: [],
         changes: '',
         createNewTable: false,
       });
@@ -205,6 +238,9 @@ export default {
             dataToSubmit.complexes[complexId] = form.value[complexId];
           });
         }
+
+        dataToSubmit.developers_in_statistics = developersStatisticsShowIdies.value;
+
         dataToSubmit.post(route("tariff-update"), {
           onSuccess: () => {
             toast.add({severity:'success', summary: 'Изменения сохранены', detail:'Вы успешно отредактировали таблицу тарифов', life: 5000});
@@ -216,6 +252,18 @@ export default {
       }
 
       onBeforeMount(() => {
+        // filling developers in statistics
+        const dbDevelopersInStatistics = props.dbTable ? JSON.parse(props.dbTable.developers_in_statistics) : null;
+        props.table.forEach(developer => {
+          if (dbDevelopersInStatistics !== null &&  dbDevelopersInStatistics.includes(developer.id)) {
+            developersStatisticsShow.value[developer.id] = true;
+            developersStatisticsShowIdies.value.push(developer.id);
+          } else {
+            developersStatisticsShow.value[developer.id] = false;
+          }
+        });
+
+        // filling tariff table
         const dbTariffTable = props.dbTable ? JSON.parse(props.dbTable.tariff_table) : [];
         props.complexes.forEach(complex => {
           if (complex.id in dbTariffTable) {
@@ -230,7 +278,7 @@ export default {
         });
       });
 
-      return {t, breadcrumbs, tariffTable, form, onComplexAdd, onComplexRemove, onTariffChange, onTariffAdd, onTariffRemove, onTariffTableSubmit, dataToSubmit }
+      return {t, breadcrumbs, tariffTable, developersStatisticsShow, developersStatisticsShowIdies, developerInStatistics, onDeveloperStatOn, onDeveloperStatOff, form, onComplexAdd, onComplexRemove, onTariffChange, onTariffAdd, onTariffRemove, onTariffTableSubmit, dataToSubmit }
   }
 }
 </script>

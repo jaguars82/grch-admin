@@ -19,9 +19,13 @@
         <MultiSelect v-model="filter.status" :options="statusOptions" optionLabel="label" optionValue="value" placeholder="Статус заявки" display="chip" />
         <MultiSelect v-model="filter.agency" :options="agenciesOptions" optionLabel="label" optionValue="value" placeholder="Агентство" display="chip" />
         <MultiSelect v-model="filter.developer" :options="developers" optionLabel="name" optionValue="id" placeholder="Застройщик" display="chip" />
-        <div class="mt-5">
-          <Button label="Применить" :icon="canApplyFilter || noFilterApplied ? 'pi pi-filter' : 'pi pi-filter-fill'" :disabled="canApplyFilter === false" @click="onFilter" />
-          <Button label="Сбросить" icon="pi pi-filter-slash" :disabled="noFilterApplied" @click="onFilterReset" />
+        <div class="mt-5 flex">
+          <div class="flex-col mr-2">
+            <Button label="Применить" :icon="canApplyFilter || noFilterApplied ? 'pi pi-filter' : 'pi pi-filter-fill'" :disabled="canApplyFilter === false" @click="onFilter" />
+          </div>
+          <div class="flex-col">
+            <Button label="Сбросить" icon="pi pi-filter-slash" :disabled="noFilterApplied" @click="onFilterReset" />
+          </div>
         </div>
       </Fieldset>
 

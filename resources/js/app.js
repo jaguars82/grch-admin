@@ -13,6 +13,7 @@ import PrimeVueLocaleEn from "@/Lang/en/prime_vue_locale_en";
 import PrimeVueLocaleRu from "@/Lang/ru/prime_vue_locale_ru";
 import Accordion from 'primevue/accordion';
 import AccordionTab from 'primevue/accordiontab';
+import Card from 'primevue/card';
 import ToastService from 'primevue/toastservice';
 import Toast from 'primevue/toast';
 import Tooltip from 'primevue/tooltip';
@@ -78,6 +79,7 @@ createInertiaApp({
             .component('Button', Button)
             .component('Accordion', Accordion)
             .component('AccordionTab', AccordionTab)
+            .component('Card', Card)
             .component('Calendar', Calendar)
             .component('Checkbox', Checkbox)
             .component('Fieldset', Fieldset)
