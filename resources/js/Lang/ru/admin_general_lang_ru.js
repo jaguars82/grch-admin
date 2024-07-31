@@ -24,6 +24,12 @@ const adminGeneralLangRu = {
     createNewTable: "Сохранить изменения в новой версии тарифной таблицы",
     changesDescription: "Опишите сделанные изменения",
     saveTriffTable: "Сохранить тарифную таблицу"
+  },
+  tutorial: {
+    tutorial: 'Обучающие материалы',
+    lessonList: 'Список уроков',
+    lessonCreate: 'Создать урок',
+    lessonUpdate: 'Редактировать урок',
   }
 }
 

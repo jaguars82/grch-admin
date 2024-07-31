@@ -24,6 +24,12 @@ const adminGeneralLangEn = {
       createNewTable: "Save changes in new version of tariff table",
       changesDescription: "Changes details",
       saveTriffTable: "Save tariff table"
+    },
+    tutorial: {
+      tutorial: 'Tutorial',
+      lessonList: 'List of lessons',
+      lessonCreate: 'Create a new lesson',
+      lessonUpdate: 'Update the lesson',
     }
   }
   

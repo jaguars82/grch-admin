@@ -76,6 +76,13 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     /* Admin Panel Pages */
 
     // Info Section
+    // Tutorial
+    Route::get('/information/tutorial', [\App\Http\Controllers\TutorialController::class, 'index'])->name('tutorial-index');
+    Route::match(['get', 'post'], '/information/tutorial/lesson/create', [\App\Http\Controllers\TutorialController::class, 'createLesson'])->name('tutorial-lesson-create');
+    Route::match(['get', 'post'], '/information/tutorial/lesson/update', [\App\Http\Controllers\TutorialController::class, 'updateLesson'])->name('tutorial-lesson-update');
+    Route::post('/information/tutorial/lesson/delete', [\App\Http\Controllers\TutorialController::class, 'deleteLesson'])->name('tutorial-lesson-delete');
+    Route::post('/information/tutorial/lesson/reoder', [\App\Http\Controllers\TutorialController::class, 'reoderLessons'])->name('tutorial-lesson-reoder');
+
     // Tariff
     Route::get('tariff', [\App\Http\Controllers\TariffController::class, 'edit'])->name('tariff-edit');
     Route::post('tariff', [\App\Http\Controllers\TariffController::class, 'update'])->name('tariff-update');
@@ -84,123 +91,20 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     // Booking
     Route::get('/stats/booking', [\App\Http\Controllers\Stats\BookingController::class, 'index'])->name('stats-booking');
 
-
     //Route::match(['get', 'post'], 'tariff', [\App\Http\Controllers\TariffController::class, 'edit'])->name('tariff-edit');
+
 
     /*This pages for example, you can delete when you design the your system*/
     //Example Pages
     Route::get('login-app', function () {
         return Inertia::render('Samples/Examples/Login');
     })->name('login-app');
-    Route::get('login-app-1', function () {
-        return Inertia::render('Samples/Examples/Auth/Login1');
-    })->name('login-app-1');
-    Route::get('login-app-2', function () {
-        return Inertia::render('Samples/Examples/Auth/Login2');
-    })->name('login-app-2');
-    Route::get('login-app-3', function () {
-        return Inertia::render('Samples/Examples/Auth/Login3');
-    })->name('login-app-3');
-    Route::get('register-app', function () {
-        return Inertia::render('Samples/Examples/Register');
-    })->name('register-app');
-    Route::get('register-app-1', function () {
-        return Inertia::render('Samples/Examples/Auth/Register1');
-    })->name('register-app-1');
-    Route::get('register-app-2', function () {
-        return Inertia::render('Samples/Examples/Auth/Register2');
-    })->name('register-app-2');
-    Route::get('register-app-3', function () {
-        return Inertia::render('Samples/Examples/Auth/Register3');
-    })->name('register-app-3');
-    Route::get('forgot-password-app', function () {
-        return Inertia::render('Samples/Examples/ForgotPassword');
-    })->name('forgot-password-app');
-    Route::get('forgot-password-app-1', function () {
-        return Inertia::render('Samples/Examples/Auth/ForgotPassword1');
-    })->name('forgot-password-app-1');
-    Route::get('forgot-password-app-2', function () {
-        return Inertia::render('Samples/Examples/Auth/ForgotPassword2');
-    })->name('forgot-password-app-2');
-    Route::get('forgot-password-app-3', function () {
-        return Inertia::render('Samples/Examples/Auth/ForgotPassword3');
-    })->name('forgot-password-app-3');
-    Route::get('lock-app', function () {
-        return Inertia::render('Samples/Examples/Lock');
-    })->name('lock-app');
-    Route::get('lock-app-1', function () {
-        return Inertia::render('Samples/Examples/Auth/Lock1');
-    })->name('lock-app-1');
-    Route::get('lock-app-2', function () {
-        return Inertia::render('Samples/Examples/Auth/Lock2');
-    })->name('lock-app-2');
     Route::get('lock-app-3', function () {
         return Inertia::render('Samples/Examples/Auth/Lock3');
     })->name('lock-app-3');
     Route::get('profile', function () {
         return Inertia::render('Samples/Examples/Profile');
     })->name('profile');
-    Route::get('pricing', function () {
-        return Inertia::render('Samples/Examples/Pricing');
-    })->name('pricing');
-    Route::get('project-management-app', function () {
-        return Inertia::render('Samples/Examples/ProjectApp');
-    })->name('project-management-app');
-    Route::get('todo-app', function () {
-        return Inertia::render('Samples/Examples/TodoApp');
-    })->name('todo-app');
-    Route::get('email-app', function () {
-        return Inertia::render('Samples/Examples/EmailApp');
-    })->name('email-app');
-    Route::get('chat-app', function () {
-        return Inertia::render('Samples/Examples/ChatApp');
-    })->name('chat-app');
-    //Component Pages
-    Route::get('alert', function () {
-        return Inertia::render('Samples/Components/Alert');
-    })->name('alert');
-    Route::get('avatar', function () {
-        return Inertia::render('Samples/Components/Avatar');
-    })->name('avatar');
-    Route::get('badge', function () {
-        return Inertia::render('Samples/Components/Badge');
-    })->name('badge');
-    Route::get('breadcrumb', function () {
-        return Inertia::render('Samples/Components/Breadcrumb');
-    })->name('breadcrumb');
-    Route::get('button', function () {
-        return Inertia::render('Samples/Components/Button');
-    })->name('button');
-    Route::get('chart', function () {
-        return Inertia::render('Samples/Components/Chart');
-    })->name('chart');
-    Route::get('collapsible', function () {
-        return Inertia::render('Samples/Components/Collapsible');
-    })->name('collapsible');
-    Route::get('content-box', function () {
-        return Inertia::render('Samples/Component/ContentBox');
-    })->name('content-box');
-    Route::get('dropdown', function () {
-        return Inertia::render('Samples/Components/Dropdown');
-    })->name('dropdown');
-    Route::get('list', function () {
-        return Inertia::render('Samples/Components/List');
-    })->name('list');
-    Route::get('loading', function () {
-        return Inertia::render('Samples/Components/Loading');
-    })->name('loading');
-    Route::get('modal', function () {
-        return Inertia::render('Samples/Components/Modal');
-    })->name('modal');
-    Route::get('pagination', function () {
-        return Inertia::render('Samples/Components/Paginate');
-    })->name('pagination');
-    Route::get('progress', function () {
-        return Inertia::render('Samples/Components/Progress');
-    })->name('progress');
-    Route::get('tab', function () {
-        return Inertia::render('Samples/Components/Tab');
-    })->name('tab');
     Route::get('table', function () {
         return Inertia::render('Samples/Components/Table', [
             'users' => \App\Models\User::all()
@@ -236,26 +140,13 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('form-input-group', function () {
         return Inertia::render('Samples/FormElements/InputGroup');
     })->name('form-input-group');
-    Route::get('form-simple-field', function () {
-        return Inertia::render('Samples/FormElements/SimpleField');
-    })->name('form-simple-field');
-    Route::get('form-repeatable-field', function () {
-        return Inertia::render('Samples/FormElements/RepeatableField');
-    })->name('form-repeatable-field');
-    Route::get('form-date-field', function () {
-        return Inertia::render('Samples/FormElements/DateField');
-    })->name('form-date-field');
+
     Route::get('form-select-input', function () {
         return Inertia::render('Samples/FormElements/SelectInput', [
             'users' => \App\Models\User::all()
         ]);
     })->name('form-select-input');
-    Route::get('form-tag-input', function () {
-        return Inertia::render('Samples/FormElements/TagInput');
-    })->name('form-tag-input');
-    Route::get('form-validation', function () {
-        return Inertia::render('Samples/FormElements/Validation');
-    })->name('form-validation');
+
 });
 
 
