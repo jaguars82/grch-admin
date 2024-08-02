@@ -9,7 +9,7 @@ class Lesson extends Model
 {
     use HasFactory;
 
-    protected $connection = 'mysql_grch_dev';
+    protected $connection = 'mysql_grch';
 
     protected $table = 'lesson';
 
