@@ -1,40 +1,59 @@
 <template>
-  <div class="flex">
-    <div class="flex flex-col">
+  <div class="formgrid grid">
+    <div class="field col">
       <label for="lesson_title">Заголовок урока</label>
       <InputText
+        class="w-full"
         inputId="lesson_title"
         v-model="form.title"
         placeholder="Заголовок (тема) урока"
       />
     </div>
-    <div class="flex flex-col">
+    <div class="field col">
       <label for="lesson_subtitle">Подзаголовок</label>
       <InputText
+        class="w-full"
         inputId="lesson_subtitle"
         v-model="form.subtitle"
         placeholder="Подзаголовок"
       />
     </div>
-    <div class="flex flex-col">
-      <label for="video_source">Видео</label>
+  </div>
+  <div class="formgrid grid">
+    <div class="field col">
+      <label for="video_source">Ссылка на видео</label>
       <InputText
+        class="w-full"
         inputId="video_source"
         v-model="form.video_source"
         placeholder="Ссылка на видео"
       />
     </div>
+    <div class="field col">
+      <label for="lesson_description">Краткое описание</label>
+      <Textarea class="w-full" inputId="lesson_description" v-model="form.description" autoResize rows="1" cols="30" />
+    </div>
   </div>
-  <div class="mt-3 flex">
-    <div class="flex-col mr-2">
+  <div class="formgrid grid">
+    <div class="field col">
+      <label for="lesson_content">Текстовое содержание</label>
+      <!--<Editor class="w-full" inputId="lesson_content" v-model="form.content" editorStyle="height: 320px" />-->
+      <Textarea class="w-full" inputId="lesson_content" v-model="form.content" rows="6" cols="30" />
+    </div>
+  </div>
+  <div class="flex justify-content-end">
+    <div class="mr-2">
+      <Button class="p-button-outlined p-button-secondary" label="Отмена" icon="pi pi-arrow-left" @click="onCancel" />
+    </div>
+    <div class="mr-2">
       <Button label="Сохранить" icon="pi pi-save" @click="onLessonSave" :disabled="!form.isDirty" />
     </div>
   </div>
-  <pre>{{ form }}</pre>
 </template>
 
 <script>
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted, nextTick } from 'vue';
+import { Inertia } from "@inertiajs/inertia";
 import { useForm } from "@inertiajs/inertia-vue3";
 import { useLanguages } from "@/Composables/Languages";
 
@@ -55,7 +74,23 @@ export default {
       title: props.actionType === 'edit' && props.lesson.title ? props.lesson.title : '',
       subtitle: props.actionType === 'edit' && props.lesson.subtitle ? props.lesson.subtitle : '',
       video_source: props.actionType === 'edit' && props.lesson.video_source ? props.lesson.video_source : '',
+      description: props.actionType === 'edit' && props.lesson.description ? props.lesson.description : '',
+      content: props.actionType === 'edit' && props.lesson.content ? props.lesson.content : '',
     });
+
+    /*onMounted (async () => {
+      if (props.actionType === 'edit' && props.lesson.content) {
+        setTimeout(async () => {
+          console.log('dsa dsfds sdsv dsf');
+          form.content = props.lesson.content;
+          await nextTick(); // Убедитесь, что DOM обновлен
+        }, 1000);
+      }
+    });*/
+
+    const onCancel = () => {
+      Inertia.get('/information/tutorial')
+    }
 
     const onLessonSave = () => {
       const targetRoute = props.actionType === 'edit' ? 'tutorial-lesson-update' : 'tutorial-lesson-create';
@@ -64,6 +99,7 @@ export default {
 
     return {
       form,
+      onCancel,
       onLessonSave,
     }
   }

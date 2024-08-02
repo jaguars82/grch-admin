@@ -22,13 +22,19 @@
         <Column field="sort_order" headerStyle="width: 3rem" header="№"></Column>
         <Column field="title" header="Урок">
           <template #body="slotProps">
-            <div>{{ slotProps.data.title }}</div>
+            <h4>{{ slotProps.data.title }}</h4>
+            <h5 v-if="slotProps.data.subtitle">{{ slotProps.data.subtitle }}</h5>
+          </template>
+        </Column>
+        <Column field="video_source" header="Видеоисточник">
+          <template #body="slotProps">
+            <a target="_blank" :href="slotProps.data.video_source">{{ slotProps.data.video_source }}</a>
           </template>
         </Column>
         <Column headerStyle="width: 7rem">
           <template #body="slotProps">
-            <Button icon="pi pi-pencil" class="p-button-rounded p-button-outlined" v-tooltip.top="'Редактировать урок'" @click="goToLessonEdit(slotProps.data.id)" />
-            <Button icon="pi pi-times" class="ml-1 p-button-rounded p-button-outlined" v-tooltip.top="'Удалить урок'" @click="requireDeleteConfirmation(slotProps.data.id)" />
+            <Button icon="pi pi-pencil" class="p-button-rounded" v-tooltip.top="'Редактировать урок'" @click="goToLessonEdit(slotProps.data.id)" />
+            <Button icon="pi pi-times" class="ml-1 p-button-rounded p-button-outlined p-button-danger" v-tooltip.left="'Удалить урок'" @click="requireDeleteConfirmation(slotProps.data.id)" />
           </template>
         </Column>
       </DataTable>
