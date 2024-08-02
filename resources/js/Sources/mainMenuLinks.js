@@ -27,6 +27,13 @@ export default function ({roles,permissions}) {
                         link: "tariff-edit",
                         type: "route"
                     },
+                    {
+                        id:"informationTutorial",
+                        label:  tm("informationTutorial"),
+                        icon: "user-graduate",
+                        link: "tutorial-index",
+                        type: "route"
+                    },
                 ]
             },
             {

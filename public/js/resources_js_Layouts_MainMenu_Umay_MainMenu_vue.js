@@ -682,6 +682,12 @@ __webpack_require__.r(__webpack_exports__);
         icon: "money-check-dollar",
         link: "tariff-edit",
         type: "route"
+      }, {
+        id: "informationTutorial",
+        label: tm("informationTutorial"),
+        icon: "user-graduate",
+        link: "tutorial-index",
+        type: "route"
       }]
     }, {
       id: "StatResources",

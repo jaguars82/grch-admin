@@ -1,12 +1,13 @@
 <template>
   <div class="formgrid grid">
     <div class="field col">
-      <label for="lesson_title">Заголовок урока</label>
+      <label for="lesson_title">Заголовок урока*</label>
       <InputText
         class="w-full"
         inputId="lesson_title"
         v-model="form.title"
         placeholder="Заголовок (тема) урока"
+        required
       />
     </div>
     <div class="field col">
@@ -21,12 +22,13 @@
   </div>
   <div class="formgrid grid">
     <div class="field col">
-      <label for="video_source">Ссылка на видео</label>
+      <label for="video_source">Ссылка на видео*</label>
       <InputText
         class="w-full"
         inputId="video_source"
         v-model="form.video_source"
         placeholder="Ссылка на видео"
+        required
       />
     </div>
     <div class="field col">
@@ -46,7 +48,7 @@
       <Button class="p-button-outlined p-button-secondary" label="Отмена" icon="pi pi-arrow-left" @click="onCancel" />
     </div>
     <div class="mr-2">
-      <Button label="Сохранить" icon="pi pi-save" @click="onLessonSave" :disabled="!form.isDirty" />
+      <Button label="Сохранить" icon="pi pi-save" @click="onLessonSave" :disabled="canSave === false" />
     </div>
   </div>
 </template>
@@ -88,6 +90,14 @@ export default {
       }
     });*/
 
+    const canSave = computed(() => {
+      if (!form.isDirty) return false;
+      if (!form.title) return false;
+      if (!form.video_source) return false;
+
+      return true;
+    });
+
     const onCancel = () => {
       Inertia.get('/information/tutorial')
     }
@@ -99,6 +109,7 @@ export default {
 
     return {
       form,
+      canSave,
       onCancel,
       onLessonSave,
     }

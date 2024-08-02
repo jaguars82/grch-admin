@@ -27,6 +27,7 @@ const mainMenuLangRu = {
     componentTooltip: "Подсказка",
     information: "Информация",
     informationTariffTable: "Тарифы",
+    informationTutorial: "Обучение",
     layoutElements: "Элементы макета",
     layoutStructure: "Структура макета",
     layoutGrid: "Сетка",

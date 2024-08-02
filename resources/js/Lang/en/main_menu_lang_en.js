@@ -27,6 +27,7 @@ const mainMenuLangEn = {
     componentTooltip: "Tooltip",
     information: "Info",
     informationTariffTable: "Tariffs",
+    informationTutorial: "Tutorial",
     layoutElements: "Layout Elements",
     layoutStructure: "Layout Structure",
     layoutGrid: "Grid",

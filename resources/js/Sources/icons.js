@@ -24,7 +24,8 @@ import {
     faMoneyCheckDollar,
     faPercent,
     faDollarSign,
-    faRubleSign
+    faRubleSign,
+    faUserGraduate
 } from "@fortawesome/free-solid-svg-icons";
 
 
@@ -33,6 +34,7 @@ library.add(
     faPlug,
     faWindowRestore,
     faChartBar,
+    faBookmark,
     faTable,
     faWindowMaximize,
     faLayerGroup,
@@ -51,5 +53,6 @@ library.add(
     faMoneyCheckDollar,
     faPercent,
     faDollarSign,
-    faRubleSign
+    faRubleSign,
+    faUserGraduate
 )
