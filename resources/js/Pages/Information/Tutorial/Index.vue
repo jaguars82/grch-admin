@@ -17,7 +17,7 @@
         </div>
       </div>
 
-      <DataTable :value="lessonsTable" tableStyle="" @rowReorder="onRowReorder">
+      <DataTable v-if="lessonsTable.length" :value="lessonsTable" tableStyle="" @rowReorder="onRowReorder">
         <Column rowReorder headerStyle="width: 3rem" />
         <Column field="sort_order" headerStyle="width: 3rem" header="№"></Column>
         <Column field="title" header="Урок">
