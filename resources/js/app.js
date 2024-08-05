@@ -3,6 +3,7 @@ require("./bootstrap");
 import { createApp, h } from "vue";
 import { createInertiaApp } from "@inertiajs/inertia-vue3";
 import { InertiaProgress } from "@inertiajs/progress";
+import ConfirmationService from 'primevue/confirmationservice';
 
 /* Vue Prime Library */
 import "primevue/resources/themes/saga-blue/theme.css";
@@ -14,6 +15,8 @@ import PrimeVueLocaleRu from "@/Lang/ru/prime_vue_locale_ru";
 import Accordion from 'primevue/accordion';
 import AccordionTab from 'primevue/accordiontab';
 import Card from 'primevue/card';
+import ConfirmDialog from 'primevue/confirmdialog';
+import Editor from 'primevue/editor';
 import ToastService from 'primevue/toastservice';
 import Toast from 'primevue/toast';
 import Tooltip from 'primevue/tooltip';
@@ -30,6 +33,8 @@ import Textarea from 'primevue/textarea';
 import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
 import Paginator from 'primevue/paginator';
+
+import 'primeflex/primeflex.css'; // import PrimeFlex CSS
 
 const PrimeVueLocales = {
     en: PrimeVueLocaleEn,
@@ -75,6 +80,7 @@ createInertiaApp({
             .use(i18n)
             .use(VueHighlightJS)
             .use(ToastService)
+            .use(ConfirmationService)
             .directive('tooltip', Tooltip)
             .component('Button', Button)
             .component('Accordion', Accordion)
@@ -82,6 +88,8 @@ createInertiaApp({
             .component('Card', Card)
             .component('Calendar', Calendar)
             .component('Checkbox', Checkbox)
+            .component('ConfirmDialog', ConfirmDialog)
+            .component('Editor', Editor)
             .component('Fieldset', Fieldset)
             .component('InputText', InputText)
             .component('InputNumber', InputNumber)
