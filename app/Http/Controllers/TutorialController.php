@@ -39,7 +39,7 @@ class TutorialController extends Controller
             $lesson->fill($validatedData);
 
             $lesson->sort_order = Lesson::getCount() + 1;
-            $lesson->videohosting_type = Lesson::HOSTING_YOUTUBE;
+            $lesson->videohosting_type = $this->detectVideohostingByUrl($lesson->video_source);
 
             $lesson->save();
 
@@ -61,6 +61,7 @@ class TutorialController extends Controller
             $validatedData = $request->validate(Lesson::validationRules());
             
             $lesson->fill($validatedData);
+            $lesson->videohosting_type = $this->detectVideohostingByUrl($lesson->video_source);
 
             $lesson->save();
 
@@ -109,6 +110,19 @@ class TutorialController extends Controller
         }
 
         return redirect()->route('tutorial-index');
+    }
+
+    private function detectVideohostingByUrl ($url)
+    {
+        if (strpos($url, 'youtube.com') !== false || strpos($url, 'youtu.be') !== false) {
+            return Lesson::HOSTING_YOUTUBE;
+        } elseif (strpos($url, 'rutube.ru') !== false) {
+            return Lesson::HOSTING_RUTUBE;
+        } elseif (strpos($url, 'vk.com') !== false) {
+            return Lesson::HOSTING_VKVIDEO;
+        } else {
+            return Lesson::HOSTING_LOCAL;
+        }
     }
 
 }

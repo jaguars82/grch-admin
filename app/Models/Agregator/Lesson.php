@@ -16,10 +16,14 @@ class Lesson extends Model
     public $timestamps = true;
 
     const HOSTING_YOUTUBE = 1;
+    const HOSTING_RUTUBE = 2;
+    const HOSTING_VKVIDEO = 3;
     const HOSTING_LOCAL = 10;
 
     public static $videohosting = [
         self::HOSTING_YOUTUBE => 'YouTube',
+        self::HOSTING_RUTUBE => 'RuTube',
+        self::HOSTING_VKVIDEO => 'VK-Video',
         self::HOSTING_LOCAL => 'Локальный сервер',
     ];
 
