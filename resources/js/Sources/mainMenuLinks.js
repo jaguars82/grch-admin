@@ -50,6 +50,13 @@ export default function ({roles,permissions}) {
                         link: "stats-booking",
                         type: "route"
                     },
+                    {
+                        id:"StatFeedUpdate",
+                        label: 'Обновления ЖК по фидам',
+                        icon: "clock",
+                        link: "stats-feed-update",
+                        type: "route"
+                    },
                 ]
             },
         ]

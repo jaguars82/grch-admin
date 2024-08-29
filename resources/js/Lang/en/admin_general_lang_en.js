@@ -2,6 +2,7 @@ const adminGeneralLangEn = {
     statistics: {
       statistics: 'Statistics',
       bookingTickets: 'Booking requests',
+      feedUpdate: 'Update Newbuildings from feeds',
     },
     tariff: {
       tariifs: "Tariffs",

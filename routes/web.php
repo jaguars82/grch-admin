@@ -86,13 +86,15 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     // Tariff
     Route::get('tariff', [\App\Http\Controllers\TariffController::class, 'edit'])->name('tariff-edit');
     Route::post('tariff', [\App\Http\Controllers\TariffController::class, 'update'])->name('tariff-update');
+    //Route::match(['get', 'post'], 'tariff', [\App\Http\Controllers\TariffController::class, 'edit'])->name('tariff-edit');
+
 
     // Statistics Section
     // Booking
     Route::get('/stats/booking', [\App\Http\Controllers\Stats\BookingController::class, 'index'])->name('stats-booking');
-
-    //Route::match(['get', 'post'], 'tariff', [\App\Http\Controllers\TariffController::class, 'edit'])->name('tariff-edit');
-
+    
+    // Update Newbuilding Complexes from Feed
+    Route::get('/stats/feed-update', [\App\Http\Controllers\Stats\FeedUpdateController::class, 'index'])->name('stats-feed-update');
 
     /*This pages for example, you can delete when you design the your system*/
     //Example Pages
