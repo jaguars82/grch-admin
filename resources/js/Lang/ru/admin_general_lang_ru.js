@@ -2,6 +2,7 @@ const adminGeneralLangRu = {
   statistics: {
     statistics: 'Статистика',
     bookingTickets: 'Заявки на бронирование',
+    feedUpdate: 'Обновления новостроек по фидам',
   },
   tariff: {
     tariifs: "Тарифы",

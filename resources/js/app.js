@@ -14,6 +14,8 @@ import PrimeVueLocaleEn from "@/Lang/en/prime_vue_locale_en";
 import PrimeVueLocaleRu from "@/Lang/ru/prime_vue_locale_ru";
 import Accordion from 'primevue/accordion';
 import AccordionTab from 'primevue/accordiontab';
+import Avatar from 'primevue/avatar';
+import Badge from 'primevue/badge';
 import Card from 'primevue/card';
 import ConfirmDialog from 'primevue/confirmdialog';
 import Editor from 'primevue/editor';
@@ -85,6 +87,8 @@ createInertiaApp({
             .component('Button', Button)
             .component('Accordion', Accordion)
             .component('AccordionTab', AccordionTab)
+            .component('Avatar', Avatar)
+            .component('Badge', Badge)
             .component('Card', Card)
             .component('Calendar', Calendar)
             .component('Checkbox', Checkbox)

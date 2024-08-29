@@ -491,6 +491,12 @@ __webpack_require__.r(__webpack_exports__);
         icon: "bookmark",
         link: "stats-booking",
         type: "route"
+      }, {
+        id: "StatFeedUpdate",
+        label: 'Обновления ЖК по фидам',
+        icon: "clock",
+        link: "stats-feed-update",
+        type: "route"
       }]
     }];
   });

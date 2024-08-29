@@ -4,10 +4,14 @@ namespace App\Models\Agregator;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
+use Carbon\Carbon;
 
 class NewbuildingComplex extends Model
 {
     use HasFactory;
+
+    const STATUS_ACTIVE = 1;
 
     protected $connection = 'mysql_grch';
 
@@ -28,6 +32,48 @@ class NewbuildingComplex extends Model
     public function newbuildings()
     {
         return $this->hasMany(Newbuilding::class);
+    }
+
+    /**
+     * List of flats (in newbuildings) with outdated updates
+     */
+    public function flatsWithOutdatedUpdates()
+    {
+        $outdatePeriod = Carbon::now()->subHours(2);
+
+        return $this->hasManyThrough(
+            Flat::class,
+            Newbuilding::class,
+            'newbuilding_complex_id',
+            'newbuilding_id',
+            'id',
+            'id'
+        )
+        ->where('newbuilding.active', '=', 1)
+        ->where('flat.status', '=', Flat::STATUS_SALE)
+        ->where('flat.updated_at', '<=', $outdatePeriod);
+    }
+
+    /**
+     * Local scope to filter only active Newbuilding Comlexes
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeOnlyActive(Builder $query)
+    {
+        return $query->where('active', self::STATUS_ACTIVE);
+    }
+
+    /**
+     * Local scope to filter only active Newbuilding Comlexes
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeOnlyWithActiveBuildings(Builder $query)
+    {
+        return $query->where('has_active_buildings', 1);
     }
 
 }
