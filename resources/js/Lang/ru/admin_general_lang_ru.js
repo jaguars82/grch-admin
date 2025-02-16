@@ -1,4 +1,17 @@
 const adminGeneralLangRu = {
+  common: {
+    buttons: {
+      saveChanges: 'Сохранить изменения',
+    },
+  },
+  company: {
+    developers: 'Застройщики',
+    developersList: 'Список доступных застройщиков',
+    developer: 'Застройщик',
+    developerCreate: 'Создание нового застройщика',
+    developerUpdate: 'обновить информацию о застройщике',
+    developerRemove: 'удалить застройщика',
+  },
   statistics: {
     statistics: 'Статистика',
     bookingTickets: 'Заявки на бронирование',

@@ -1,4 +1,17 @@
 const adminGeneralLangEn = {
+    common: {
+      buttons: {
+        saveChanges: 'Save changes',
+      },
+    },
+    company: {
+      developers: 'Developers',
+      developersList: 'List of aviable developers',
+      developer: 'Developer',
+      developerCreate: 'Create a new developer',
+      developerUpdate: 'update the profile of the developer',
+      developerRemove: 'remove the developer',
+    },
     statistics: {
       statistics: 'Statistics',
       bookingTickets: 'Booking requests',

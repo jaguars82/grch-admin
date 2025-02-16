@@ -44,7 +44,7 @@ return [
 
         'grch' => [
             'driver' => 'local',
-            'root' => '',
+            'root' => env('GRCH_FILES_PATH'),
             'url' => env('GRCH_URL'),
         ],
 

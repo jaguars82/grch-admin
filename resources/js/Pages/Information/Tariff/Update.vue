@@ -36,7 +36,7 @@
             >
               <Fieldset class="my-2">
                 <template #legend>
-                  <div class="field-checkbox">
+                  <div class="field-checkbox mb-0">
                     <Checkbox
                       class="mr-1"
                       :inputId="`complex-${complex.id}-flag`"
@@ -83,7 +83,7 @@
             </div>
           </AccordionTab>
         </Accordion>
-        <div class="field-checkbox">
+        <div class="field-checkbox mt-2">
           <Checkbox
             class="mr-2"
             inputId="newtable-flag"
