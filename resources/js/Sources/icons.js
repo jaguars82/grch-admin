@@ -25,6 +25,8 @@ import {
     faPercent,
     faDollarSign,
     faRubleSign,
+    faUserGear,
+    faUsers,
     faUserGraduate
 } from "@fortawesome/free-solid-svg-icons";
 
@@ -54,5 +56,7 @@ library.add(
     faPercent,
     faDollarSign,
     faRubleSign,
+    faUserGear,
+    faUsers,
     faUserGraduate
 )

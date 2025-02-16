@@ -708,6 +708,19 @@ __webpack_require__.r(__webpack_exports__);
         link: "stats-feed-update",
         type: "route"
       }]
+    }, {
+      id: "Companies",
+      label: 'Участники рынка',
+      icon: "users",
+      link: null,
+      type: "dropdown",
+      links: [{
+        id: "Developers",
+        label: 'Застройщики',
+        icon: "user-gear",
+        link: "developer-index",
+        type: "route"
+      }]
     }];
   });
 

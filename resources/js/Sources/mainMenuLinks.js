@@ -59,6 +59,23 @@ export default function ({roles,permissions}) {
                     },
                 ]
             },
+            {
+                id: "Companies",
+                label: 'Участники рынка',
+                icon: "users",
+                link: null,
+                type: "dropdown",
+                links: [
+                    {
+                        id:"Developers",
+                        label: 'Застройщики',
+                        icon: "user-gear",
+                        link: "developer-index",
+                        type: "route"
+                    },
+                ]
+            },
+
         ]
     });
 

@@ -1484,6 +1484,9 @@ select {
 .aspect-auto {
   aspect-ratio: auto;
 }
+.h-1 {
+  height: 0.25rem;
+}
 .h-1\/2 {
   height: 50%;
 }
@@ -1630,6 +1633,9 @@ select {
 }
 .min-w-\[25rem\] {
   min-width: 25rem;
+}
+.max-w-60 {
+  max-width: 15rem;
 }
 .max-w-6xl {
   max-width: 72rem;
@@ -1958,11 +1964,17 @@ select {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+.text-ellipsis {
+  text-overflow: ellipsis;
+}
 .whitespace-normal {
   white-space: normal;
 }
 .whitespace-nowrap {
   white-space: nowrap;
+}
+.text-nowrap {
+  text-wrap: nowrap;
 }
 .rounded {
   border-radius: 0.25rem;

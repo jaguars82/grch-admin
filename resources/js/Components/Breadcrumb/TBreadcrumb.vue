@@ -12,7 +12,7 @@
           <div v-if="hasSlot(item.key)">
             <slot :name="item.key" :props="item" />
           </div>
-          <div>
+          <div class="text-nowrap">
             {{ item.label }}
           </div>
           <!--Separator Icon-->
@@ -39,7 +39,7 @@
           <div v-if="hasSlot(item.key)">
             <slot :name="item.key" :props="item" />
           </div>
-          <div>
+          <div class="text-nowrap">
             {{ item.label }}
           </div>
         </div>

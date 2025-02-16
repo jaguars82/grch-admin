@@ -75,6 +75,16 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     /* Admin Panel Pages */
 
+    // Company Section
+    // Developer
+    Route::get('/company/developer', [\App\Http\Controllers\DeveloperController::class, 'index'])->name('developer-index');
+    Route::get('/company/developer/create', [\App\Http\Controllers\DeveloperController::class, 'create'])->name('developer-create');
+    Route::post('/company/developer/store', [\App\Http\Controllers\DeveloperController::class, 'store'])->name('developer-store');
+    Route::get('/company/developer/{id}/edit', [\App\Http\Controllers\DeveloperController::class, 'edit'])->name('developer-edit');
+    Route::post('/company/developer/update', [\App\Http\Controllers\DeveloperController::class, 'update'])->name('developer-update');
+    Route::delete('/company/developer/{id}/delete', [\App\Http\Controllers\DeveloperController::class, 'delete'])->name('developer-delete');
+    Route::post('/company/developer/{id}/logo-delete', [\App\Http\Controllers\DeveloperController::class, 'deleteLogo']);
+
     // Info Section
     // Tutorial
     Route::get('/information/tutorial', [\App\Http\Controllers\TutorialController::class, 'index'])->name('tutorial-index');
@@ -98,6 +108,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     /*This pages for example, you can delete when you design the your system*/
     //Example Pages
+    /*
     Route::get('login-app', function () {
         return Inertia::render('Samples/Examples/Login');
     })->name('login-app');
@@ -116,9 +127,11 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::resource('product', \App\Http\Controllers\DemoContentController::class);
     Route::post('product', [\App\Http\Controllers\DemoContentController::class, 'index'])->name('product.search');
+    */
 
     /*TODO: Toastr Feature
     Route::get('toastr',function (){return Inertia::render('Samples/Components/Toastr');})->name('toastr');*/
+    /*
     Route::get('tooltip', function () {
         return Inertia::render('Samples/Components/Tooltip');
     })->name('tooltip');
@@ -148,6 +161,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
             'users' => \App\Models\User::all()
         ]);
     })->name('form-select-input');
+    */
 
 });
 

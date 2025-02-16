@@ -25,10 +25,13 @@ import Tooltip from 'primevue/tooltip';
 import Button from 'primevue/button';
 import Calendar from "primevue/calendar";
 import Checkbox from 'primevue/checkbox';
+import FileUpload from 'primevue/fileupload';
 import Fieldset from 'primevue/fieldset';
 import InputText from 'primevue/inputtext';
 import InputNumber from 'primevue/inputnumber';
+import Image from 'primevue/image';
 import MultiSelect from 'primevue/multiselect';
+import ProgressBar from 'primevue/progressbar';
 import ProgressSpinner from 'primevue/progressspinner';
 import SelectButton from 'primevue/selectbutton';
 import Textarea from 'primevue/textarea';
@@ -94,10 +97,13 @@ createInertiaApp({
             .component('Checkbox', Checkbox)
             .component('ConfirmDialog', ConfirmDialog)
             .component('Editor', Editor)
+            .component('FileUpload', FileUpload)
             .component('Fieldset', Fieldset)
             .component('InputText', InputText)
             .component('InputNumber', InputNumber)
+            .component('Image', Image)
             .component('MultiSelect', MultiSelect)
+            .component('ProgressBar', ProgressBar)
             .component('ProgressSpinner', ProgressSpinner)
             .component('SelectButton', SelectButton)
             .component('Textarea', Textarea)
